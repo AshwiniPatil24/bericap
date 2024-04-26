@@ -1,0 +1,92 @@
+﻿@model IEnumerable<FreightApp.Models.SALES>
+
+ 
+
+<table class="table table-bordered  table-striped">
+    <tr>
+        <th>
+           Bill Doc.
+        </th>
+        <th>
+           Bill Date
+        </th>
+        <th>
+           REF No.
+        </th>
+          <th style="background-color:lightblue">
+           LR No.
+        </th>
+        <th>
+          Bill  Quantity
+        </th>
+        <th>
+           Box  Qyantity
+        </th>
+               
+        <th>
+            Transporter Code
+        </th>
+        <th>
+           Transporter Name 
+        </th>
+      
+        <th>
+            Vehicle
+        </th>
+        <th>
+           Vehicle No.
+        </th>
+       
+        <th>
+            TotalFreight
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILLING_DOC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_DT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REF_NO)
+        </td>
+        <td style="background-color:lightblue">
+            @Html.DisplayFor(modelItem => item.LR_NO)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_QTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BOX_QTY)
+        </td>
+       
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.VENDOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRANS_NAME)
+        </td>
+        
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.VEH_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VEH_NO)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.FREIGHT_T)
+        </td>
+        
+      
+    </tr>
+}
+
+</table>

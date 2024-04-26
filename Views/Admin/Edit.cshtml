@@ -1,0 +1,115 @@
+﻿@model FreightApp.Models.LOGIN
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit User</h2>
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <table class=" table table-bordered table-striped ">
+
+        <tr>
+        <td>
+            @Html.LabelFor(model => model.USERID)
+      </td>
+        <td>
+            @Html.TextBoxFor(model => model.USERID, new { id="uid"})
+            @Html.ValidationMessageFor(model => model.USERID)
+      </td>
+
+
+        <td>
+            @Html.LabelFor(model => model.PASSWORD)
+      </td>
+        <td>
+            
+          ******
+      </td>
+</tr>
+        <tr>
+        <td>
+            @Html.LabelFor(model => model.REGID)
+      </td>
+        <td>
+            @Html.TextBoxFor(model => model.REGID, new { id="regid", @readonly = "readonly"})
+            @Html.ValidationMessageFor(model => model.REGID)
+      </td>
+
+        <td>
+            @Html.LabelFor(model => model.ACTIVESTATUS)
+      </td>
+        <td>
+            @Html.DropDownListFor(model => model.ACTIVESTATUS, new List<SelectListItem>
+    {
+                        new SelectListItem() {Text = "Active", Value="A"},
+                        new SelectListItem() {Text = "Deactive", Value="D"}
+                      
+    })  
+            
+      </td>
+       </tr>
+        <tr><td>
+            <input type="submit" value="Save" />
+        </td></tr>
+        
+   </table>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+       
+        $("#uid").change(function () {
+          
+            var uid = $("#uid").val();
+            var flag = $(this).attr('id');
+            alert(flag);
+            alert(uid);
+            var rootUrl = '@Url.Content("~")'
+           
+          $.get(rootUrl+ '/Admin/chkUniqueUser/', { userid: uid, flag: "userid" }, function (p) {
+                if (p != "N") {
+                    alert("UserId already Exist. Please enter another UserId.");
+                    $("#uid").val("");
+                    $("#uid").focus();
+                }
+                else {
+                    $("#regid").focus();
+                }
+        });
+
+        });
+
+        $("#regid").change(function () {
+            alert("inside");
+            var uid1 = $("#regid").val();
+            alert(uid);
+            var rootUrl = '@Url.Content("~")'
+           
+          $.get(rootUrl+ '/Admin/chkUniqueUser/', { userid: uid1, flag: "regid" }, function (p) {
+                if (p != "N") {
+                    alert("EmployeeId already Exist. Please enter another EmployeeId.");
+                    $("#regid").val("");
+                    $("#regid").focus();
+                }
+
+            });
+
+          });
+
+
+
+    });
+</script>

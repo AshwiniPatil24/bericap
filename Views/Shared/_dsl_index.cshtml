@@ -1,0 +1,112 @@
+﻿@model IEnumerable<FreightApp.Models.DIESEL_M>
+
+
+
+<div>
+    @Ajax.ActionLink("Add new Rate", "dsl_Create",
+        new AjaxOptions
+        {
+            HttpMethod = "GET",
+            UpdateTargetId = "divpartialdsl",
+            InsertionMode = InsertionMode.Replace
+
+        })
+</div>
+
+
+
+<div class="panel panel-default">
+    <div class="col">
+        <div class="col-md-8  well partl" style="overflow-y: scroll; display: block;">
+            
+            <table class="table-bordered table-striped  " id="header-fixed">
+                <thead>
+                    <tr class="hd">
+                        <th hidden="hidden">ID</th>
+                        <th>
+                        Month/Date
+                        </th>
+                        <th>
+                           Price
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="trindex">
+                            <td hidden="hidden">
+                                @Html.DisplayFor(modelItem => item.ID)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MONTYRDD)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PRICE_D)
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    @* ------------------------------------------------------------------------------------ *@
+    <div class="col">
+        <div class="col-md-4">
+            <div class="panel-heading">
+                Details
+            </div>
+            <div id="divpartialdsl"></div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('.trindex').click(function () {
+
+            //  $(this).css("background-color", "blue");
+            var trid = $(this).find('td:first').text().trim();//trying to alert id of the clicked row
+            //alert(trid)
+            if (trid == "" || trid == null) { }
+            else {
+                var rootUrl = '@Url.Content("~")'
+              $.get(rootUrl+'/Freight/dsl_Edit/', { idd: trid }, function (data) {
+                    //alert(data)
+                    $("#divpartialdsl").html(data)
+
+                })
+            }
+        });
+
+
+
+
+    });
+</script>
+
+<style>
+    .table-striped {
+  background-color: #d7f1ee;
+
+    }
+     .hd {
+         background-color: #abc6c6;
+    }
+
+        .partl {
+    height:550px;
+    }
+
+</style>
+
+

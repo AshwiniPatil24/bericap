@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BeriCap</title>
+    <script src="~/Scripts/jquery-3.1.0.js"></script>
+    <script src="~/Scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+     
+<div class="example3">
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container-fluid">
+     
+        
+       @* <a class="navbar-brand" href="http://www.fabexengineers.com/"><img style="width:140px;"  src="~/Content/fabexlogo.jpg" /></a>*@
+        
+    
+      <div id="navbar3" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown"><a href="#" class="dropdown-toggle"><span class="glyphicon glyphicon-king"></span> Admin <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                          <li><a href="@Url.Action("appIndex","Admin")"><span class="glyphicon glyphicon-flag"></span> Application List</a></li>
+                          <li><a href="@Url.Action("Index","Admin")"><span class="glyphicon glyphicon-user"></span> User List</a></li>                        
+                          <li><a href="@Url.Action("mapUser","Admin")"><span class="glyphicon glyphicon-list-alt"></span> Map Apps</a></li>
+                          <li><a href="@Url.Action("application_v","Admin")"><span class="glyphicon glyphicon-list-alt"></span> Map Views</a></li>
+                          
+                    </ul>
+          <li/>
+       
+       @*  <li class="dropdown"><a href="#" class="dropdown-toggle"> <span class="glyphicon glyphicon-tasks"></span> My Task<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                      <li><a href="@Url.Action("Task_Index","WorkOrder", new { idd = Session["userid"] ,searchBy="STATUS",Search="Assigned",@class="namestyle"},null)"><span class="glyphicon glyphicon-tasks"></span> My Task List</a></li>
+                         <li><a href="@Url.Action("Index_Task_Unbilled","WorkOrder", new { idd = Session["userid"] ,@class="namestyle"},null)"><span class="glyphicon glyphicon-tasks"></span> Unbilled Task</a></li>
+                       
+                    </ul>
+         </li>
+
+         <li class="dropdown"><a href="#" class="dropdown-toggle"> <span class="glyphicon glyphicon-equalizer"></span> Dashboards<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                      <li><a href="@Url.Action("Dashboard1", "WorkOrder")"><span class="glyphicon glyphicon-indent-left"></span> Dashboard1</a></li>
+                       
+                    </ul>
+         </li>
+
+         <li class="dropdown"><a href="#" class="dropdown-toggle"> <span class="glyphicon glyphicon-hand-right"></span>  HRM <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                         <li>@Html.ActionLink("My Details", "My_Details", "Employee", new { idd = Session["userid"] ,@class="namestyle"}, null)</li>
+                         <li>@Html.ActionLink("My Payslips", "My_Payslips", "Employee", new { idd = Session["userid"] ,@class="namestyle"}, null)</li>
+                    </ul>
+         </li>
+          <li class="dropdown"><a href="#" class="dropdown-toggle"> <span class="glyphicon glyphicon-link"></span> Supply Chain <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("My Organization","Create","Company",new {code = "ORG",@class="namestyle"},null)</li>
+                        <li>@Html.ActionLink("Supplier List","Index","Company",new {code = "SUP",@class="namestyle"},null)</li>
+                        <li>@Html.ActionLink("Customer List","Index","Company",new {code = "CUS",@class="namestyle"},null)</li>
+                        <li>@Html.ActionLink("Contact Diary","contact_Index","Company",new {@class="namestyle"},null)</li>
+                        <li>@Html.ActionLink("Purchase Order","Index","Order",new {@class="namestyle"},null)</li>
+                    </ul>
+          </li>
+             
+        <li class="dropdown"><a href="#" class="dropdown-toggle"> <span class="glyphicon glyphicon-usd"></span>  Accounts <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                         <li><a href="@Url.Action("COMPANY_ACCOUNT_M_Index","Admin")"><span class="glyphicon glyphicon-piggy-bank"></span> Company Account</a></li>
+                         
+                         <li><a href="@Url.Action("Index","Invoice")"><span class="glyphicon glyphicon-duplicate"></span> Invoices</a></li>
+                   </ul>
+         </li>*@
+
+          <li class="dropdown"> <a class="dropdown-toggle" href="#"><span class="glyphicon glyphicon-user"></span> @Session["userid"] <b class="caret"></b></a>
+             
+
+
+                    <ul class="dropdown-menu">
+                         <li><a href="@Url.Action("Logout","Login")"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                    </ul>
+          </li>
+    </ul>        
+             
+        
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!--/.container-fluid -->
+  </nav>
+</div>
+@*    <div class="loader"></div>*@
+    <div class="rnbody">@RenderBody()</div>
+    </body>
+</html>
+
+
+<script>
+
+    $(window).load(function () {
+        //$(".loader").fadeOut("fast");
+    });
+
+
+    $(document).ready(function () {
+        //session end 
+        var sessionTimeoutWarning = @Session.Timeout -1;
+
+        var sTimeout = parseInt(sessionTimeoutWarning) * 60 * 1000;
+        setTimeout('SessionEnd()', sTimeout);
+
+        function SessionEnd() {
+            window.FreightApp = "/Login/Login";
+        }
+
+
+        wimdow.onload = fumction()
+        {
+            if (Session["userid"] == null) {
+                window.FreightApp.href='@Url.Action("Login", "Login")';
+            }
+        }
+
+
+
+    });
+
+
+  
+
+
+
+
+
+
+</script>

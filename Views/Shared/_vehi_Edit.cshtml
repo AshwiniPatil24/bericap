@@ -1,0 +1,145 @@
+﻿@model FreightApp.Models.VEHICLE_M
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm("vehi_vehi_save", "Freight"))
+{
+    <div id="edit2">
+        <table class="table table-bordered table-hover" >
+            <tr hidden="hidden">
+                <td>
+                    @Html.LabelFor(model => model.ID)
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.ID)
+                    @Html.ValidationMessageFor(model => model.ID)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                   Vehicle Name:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.VEH_NAME)
+                    @Html.ValidationMessageFor(model => model.VEH_NAME)
+                </td>
+            </tr>
+
+  
+
+            <tr>
+                 <td>Milage:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.VEH_AVG, new {@type="number" })
+                    @Html.ValidationMessageFor(model => model.VEH_AVG)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  Loadability:
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.LOADABILITY, new {@type="number" })
+                    @Html.ValidationMessageFor(model => model.LOADABILITY)
+                </td>
+            </tr>
+
+            <tr>
+                 <td colspan="2">
+                    <input type="submit" value="Save" class="btn-success" />
+                </td>
+            </tr>
+
+        </table>
+    </div> 
+    
+    
+    <div id="details2">
+     <table class="table table-bordered table-hover" >
+
+            <tr hidden="hidden">
+
+                <td>Id.
+                </td>
+                <td id="idv">
+                    @Html.DisplayFor(model => model.ID)
+                </td>
+            </tr>
+
+            <tr>
+
+                <td>Vehicle Name:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VEH_NAME)
+                </td>
+            </tr>
+
+           @* <tr>
+                <td>Code:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VEH_CODE)
+                </td>
+            </tr>*@
+
+            <tr>
+                <td>Milage:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VEH_AVG)
+                </td>
+            </tr>
+
+            <tr>
+                <td> Loadability:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.LOADABILITY)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" class="btn-primary" value="Edit" id="edt2" />
+                </td>
+                
+            </tr>
+        </table>
+    </div>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#details2").show();
+        $("#edit2").hide();
+
+        $("#edt2").click(function () {
+           
+            $("#details2").hide();
+            $("#edit2").show();
+
+        });
+
+
+  
+    });
+
+
+
+</script>
+
+
+<style>
+  .table {
+     background-color: #d7f1ee;
+}
+
+    input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+    </style>

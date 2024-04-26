@@ -1,0 +1,259 @@
+﻿@model FreightApp.Models.KM_M
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-dialog.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-dialog.css" rel="stylesheet" />
+
+@using (Html.BeginForm("km_Edit_save", "Freight"))
+{
+     <div id="edit7">
+  
+        <table class="table table-bordered table-hover" >
+            <tr hidden="hidden">
+                <td >ID
+                </td>
+                <td  >
+                   @Html.TextBoxFor(model => model.ID, new { @readonly = "readonly" })
+                </td>
+            </tr>
+         <tr>
+       <td>
+            State:
+        </td>
+      <td>
+            @Html.TextBoxFor(model => model.STATE, new {@readonly="readonly" })
+            
+        </td>
+            </tr>
+        
+
+          <tr>
+       <td>
+           Zone:
+        </td>
+      <td>
+            @Html.TextBoxFor(model => model.ZONE, new {@readonly="readonly" ,@id="zn" })
+            @Html.ValidationMessageFor(model => model.ZONE)
+        </td>
+            </tr>
+
+        <tr>
+       <td>
+           Destination:
+        </td>
+      <td>
+            @Html.TextBoxFor(model => model.DESTINATION, new {@readonly="readonly" })
+            @Html.ValidationMessageFor(model => model.DESTINATION)
+        </td>
+            </tr>
+
+        <tr>
+       <td>
+          Kilometers
+        </td>
+      <td>
+            @Html.EditorFor(model => model.KM)
+            @Html.ValidationMessageFor(model => model.KM)
+        </td>
+            </tr>
+
+        <tr>
+       <td>
+           Transit Time:
+        </td>
+      <td>
+         
+              @Html.TextBoxFor(model => model.TRANSIT_TM, new {@type = "number"})
+            @Html.ValidationMessageFor(model => model.TRANSIT_TM)
+        </td>
+            </tr>
+        <tr hidden="hidden">
+       <td>
+            @Html.LabelFor(model => model.ZONE_ID)
+        </td>
+      <td>
+            @Html.EditorFor(model => model.ZONE_ID)
+            @Html.ValidationMessageFor(model => model.ZONE_ID)
+        </td>
+</tr>   <tr>
+               <td colspan="2"> <input type="submit"  id="sv" value="Save" class="btn-success"  /></td>
+           </tr>
+        </table>
+    </div> 
+    
+    
+    
+       <div id="details7">
+
+      <table class="table table-bordered table-hover" >
+                <tr hidden="hidden">
+                <td >ID
+                </td>
+                <td id="idkm" >
+                    @Html.DisplayFor(model => model.ID)
+                </td>
+            </tr>
+
+          
+           <tr>
+   <td>
+       State:
+    </td>
+   <td>
+        @Html.DisplayFor(model => model.ZONE_M.STATE)
+    </td>
+</tr>
+
+    <tr>
+   <td>
+         Zone:
+    </td>
+   <td>
+        @Html.DisplayFor(model => model.ZONE_M.ZONE)
+    </td>
+</tr>
+    <tr>
+   <td>
+        Destinantion:
+    </td>
+   <td>
+        @Html.DisplayFor(model => model.DESTINATION)
+    </td>
+</tr>
+
+    <tr>
+   <td>
+        Kilometers:
+    </td>
+   <td>
+        @Html.DisplayFor(model => model.KM)
+    </td>
+</tr>
+
+    <tr>
+   <td>
+         Transite Time:
+    </td>
+   <td>
+        @Html.DisplayFor(model => model.TRANSIT_TM)
+    </td>
+</tr>
+    <tr hidden="hidden">
+   <td>
+         @Html.DisplayNameFor(model => model.ZONE_ID)
+    </td>
+   <td>
+        @Html.DisplayFor(model => model.ZONE_ID)
+    </td>
+        </tr>
+
+         
+              <tr>
+        <td colspan="2">
+             <input type="button" class="btn-primary" value="Edit" id="editbtn7" />
+        </td>
+           
+    </tr>
+
+        </table>
+
+    </div>  
+}
+    
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#details7").show();
+        $("#edit7").hide();
+
+        $("#editbtn7").click(function () {
+            //alert("btn clicked")
+            $("#details7").hide();
+            $("#edit7").show();
+
+        });
+
+
+        $("#sv").click(function () {
+            $("#zn").val();
+        });
+    
+
+@*        $("#dels7").click(function () {
+            var idd = $("#idkm").text(); //id od textbox contains "ID" of the record
+            alert(idd)
+            if (idd == "" || idd == null) { }
+            else {
+
+                var msg = "Are you sure you want to delete the data?";
+                BootstrapDialog.show({
+                    message: msg,
+                    type: BootstrapDialog.TYPE_WARNING,
+                    buttons: [
+                    {
+                        label: 'Yes',
+
+                        // no title as it is optional
+                        cssClass: 'btn-primary',
+                        data: {
+                            js: 'btn-confirm',
+                            'user-id': '3'
+                        },
+                        action: function (dialogItself) {
+
+                            var rootUrl = '@Url.Content("~")'
+                          $.get(rootUrl+'/Freight/km_del/', { id: idd }, function (p) {
+
+                                dialogItself.close();
+                                alert(p);
+                                FreightApp.reload();
+
+                            });
+                        }
+                    },
+
+                {
+                    label: 'Close',
+                    action: function (dialogItself) {
+                        dialogItself.close();
+                    }
+                }]
+                });
+                }
+        });*@
+
+    });
+
+
+
+</script>
+
+
+
+<style>
+
+           .table {
+     background-color: #d7f1ee;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    margin: 0; 
+}
+
+         
+</style>
+
+
+

@@ -1,0 +1,143 @@
+﻿@model IEnumerable<FreightApp.Models.CUSREP>
+
+
+
+<div>
+    <table   style="width:40%;color:#1977eb ;text-align:right" class="table " >
+     <tr>
+   
+
+    <th>  Total No. Vehicles placed  </th>         <td class="p_1000"> <b>@ViewBag.totveh</b>   </td> <td></td> <th></th><td></td>
+     </tr>
+    <tr>  
+     <th>   Total No. of Detention Days   </th>         <td class="p_1000"><b> @ViewBag.totdet </b> </td><td></td>
+     <th>   Total No. of Vehicles (Delayed)  </th>         <td class="p_1000"> <b>@ViewBag.totdel</b>   </td>  
+    </tr>
+    <tr>  
+     <th>  Percent Detention  </th>         <td class="p_1000"><b> @ViewBag.peredet% </b>  </td> <td></td>
+     <th>  Percent Delay  </th>         <td class="p_1000"> <b>@ViewBag.peredel%</b>   </td>  
+    </tr>
+         </table>
+
+</div>
+
+
+@*<table  style="width:60%;font-size:small"  class="table table-hover table-striped table-scroll" id="table-1">*@
+<div id="table-container" >
+<table id="maintable" class="table table-hover table-striped table-scroll"  style="width:60%;font-size:small">
+    <thead>
+    <tr style="background-color:deepskyblue" >
+        <th>
+           Customer Name
+        </th>
+        <th>
+             Customer Code
+        </th>
+        <th>
+         Vehicle Placed
+        </th>
+        <th>
+         Delay in Delivery
+
+        </th>
+        <th>
+          Delay %
+        </th>
+        <th>
+          Detention Days
+        </th>
+        <th>
+            Detention %
+        </th>
+    </tr>
+        </thead>
+<tbody >
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CUST_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CUST_CODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NO_VEH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DEL_DELAY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PERCNT)%
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DETNNOVEH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DETPERC)%
+        </td>
+       
+    </tr>
+}
+</tbody>
+</table>
+
+<div id="bottom_anchor"></div>
+</div>
+
+
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+ 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        function moveScroll() {
+            var scroll = $(window).scrollTop();
+            var anchor_top = $("#maintable").offset().top;
+            var anchor_bottom = $("#bottom_anchor").offset().top;
+            if (scroll > anchor_top && scroll < anchor_bottom) {
+                clone_table = $("#clone");
+                if (clone_table.length == 0) {
+                    clone_table = $("#maintable").clone();
+                    clone_table.attr('id', 'clone');
+                    clone_table.css({
+                        position: 'fixed',
+                        'pointer-events': 'none',
+                        top: 0
+                    });
+                    clone_table.width($("#maintable").width());
+                    $("#table-container").append(clone_table);
+                    $("#clone").css({ visibility: 'hidden' });
+                    $("#clone thead").css({ visibility: 'visible', 'pointer-events': 'auto' });
+                }
+            } else {
+                $("#clone").remove();
+            }
+        }
+        $(window).scroll(moveScroll);
+    });
+   </script>
+
+
+<style>    
+body { height: 1000px; }
+thead{
+    background-color:white;
+}
+
+</style>
+
+
+
+

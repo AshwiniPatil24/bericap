@@ -1,0 +1,159 @@
+﻿@model IEnumerable<FreightApp.Models.DETENTIONREP>
+
+
+
+<h3 style="color:#1977eb"> Total Detention Amount : @ViewBag.det</h3>
+<div id="table-container" >
+<table id="maintable" class="table table-hover table-striped table-scroll"  style="width:70%;font-size:small">
+   
+    <thead>
+     <tr style="background-color:deepskyblue">
+      
+        <th>Lr No</th>
+         <th>Bill No</th>
+          <th>Name of the ship-to party </th>
+         <th>Code of ship-to party </th>
+        <th>Location</th>
+        <th><span class="wordwrap">  Billing Document </span> </th>
+          <th>Referance No.</th>
+          <th><span class="wordwrap">Reporting Date & Time</span></th> 
+          <th><span class="wordwrap">Releasing Date & Time</span></th>
+        <th>Billing Date </th>
+        <th>Detention  </th>
+        <th>Reason </th>
+
+    </tr>
+</thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LR_NO)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.BILL_NO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CUSTOMER)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CUSTOMERCODE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOCATION)
+            </td>
+            <td >
+               
+                @Html.Raw(item.BILL_DOC.Replace(",","<br>"))
+                
+            </td>
+             <td>
+                @Html.Raw(item.REF_NO.Replace(",","<br>"))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.REPORTING_DT)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.RELEASING_DT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BILL_DT)
+            </td>
+             
+                    <td class="p_1000">
+                @Html.DisplayFor(modelItem => item.DETENTION)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DETENTION_Note)
+            </td>        
+        </tr>
+    }
+</tbody>
+</table>
+
+    
+<div id="bottom_anchor"></div>
+</div>
+
+
+
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+ 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('tr').find(".p_1000").each(function () {
+            var x = $(this).text();
+
+            var y = numberWithCommas(x)
+            $(this).text(y);$(this).css('text-align','right')
+
+        })//end of function.
+        //gives values with commas to rows which having class-p_1000.
+
+        function numberWithCommas(x) {
+            
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }//end of function.
+        //gives values with commas.
+
+
+        function moveScroll() {
+            var scroll = $(window).scrollTop();
+            var anchor_top = $("#maintable").offset().top;
+            var anchor_bottom = $("#bottom_anchor").offset().top;
+            if (scroll > anchor_top && scroll < anchor_bottom) {
+                clone_table = $("#clone");
+                if (clone_table.length == 0) {
+                    clone_table = $("#maintable").clone();
+                    clone_table.attr('id', 'clone');
+                    clone_table.css({
+                        position: 'fixed',
+                        'pointer-events': 'none',
+                        top: 0
+                    });
+                    clone_table.width($("#maintable").width());
+                    $("#table-container").append(clone_table);
+                    $("#clone").css({ visibility: 'hidden' });
+                    $("#clone thead").css({ visibility: 'visible', 'pointer-events': 'auto' });
+                }
+            } else {
+                $("#clone").remove();
+            }
+        }
+        $(window).scroll(moveScroll);
+
+
+
+    })
+    </script>
+
+
+
+<style>
+    span.wordwrap {
+    word-wrap:break-word
+    
+    }
+   
+     body { height: 1000px; }
+thead{
+    background-color:white;
+}
+
+
+
+</style>

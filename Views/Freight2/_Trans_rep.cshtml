@@ -1,0 +1,140 @@
+﻿@model IEnumerable<FreightApp.Models.TRANSREP>
+
+<div>
+    <table   style="width:40%;color:#1977eb ;text-align:right" class="table " >
+     <tr>
+    <th>  Total Billed Amount  </th> <td class="p_1000"> <b>@ViewBag.bil</b>   </td>  <td></td>
+    <th>  Total No. Vehicles placed  </th>         <td class="p_1000"> <b>@ViewBag.totveh</b>   </td>  
+     </tr>
+    <tr>  
+     <th>  Total Unbilled Amount  </th>         <td class="p_1000"><b> @ViewBag.unbil </b> </td><td></td>
+     <th>  Total delay in delivery  </th>         <td class="p_1000"> <b>@ViewBag.totdel</b>   </td>  
+    </tr>
+    <tr>  
+     <th>  Total Billing Amount  </th>         <td class="p_1000"><b> @ViewBag.biltot </b>  </td> <td></td>
+     <th>  percent Delay  </th>         <td class="p_1000"> <b>@ViewBag.peredel%</b>   </td>  
+    </tr>
+         </table>
+
+</div>
+@*<table   style="width:45%" class="table table-hover table-striped table-scroll">*@
+<div id="table-container" >
+<table id="maintable" class="table table-hover table-striped table-scroll"  style="width:45%;font-size:small">
+    
+    <thead>
+    
+     <tr style="background-color:deepskyblue">
+        <th>  Transporter Name </th>
+        <th>   Code   </th>
+        <th>  No. of Vehicle placed </th>
+        <th>  Delay in Delivery  </th>
+         <th style="text-align:right">  Billing amount  </th>
+             <th style="text-align:right"> Unbilled </th> 
+           <th style="text-align:right"> &nbsp;&nbsp; % </th>
+        
+    </tr>
+        </thead>
+    <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VENDOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VENDOR_ID)
+        </td>
+        <td style="text-align:center">
+            @Html.DisplayFor(modelItem => item.NO_VEH)
+        </td>
+        <td style="text-align:center">
+            @Html.DisplayFor(modelItem => item.DEL_DELAY)
+        </td>
+                <td class="p_1000">
+            @Html.DisplayFor(modelItem => item.BILL_AMOUNT)
+        </td>
+                 <td class="p_1000">
+            @Html.DisplayFor(modelItem => item.UNBILL)
+        </td>
+        <td class="p_1000">
+            @Html.DisplayFor(modelItem => item.PERCNT)%
+        </td>
+      
+    </tr>
+}
+</tbody>
+</table>
+
+    
+<div id="bottom_anchor"></div>
+</div>
+
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+ 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('tr').find(".p_1000").each(function () {
+            var x = $(this).text();
+
+            var y = numberWithCommas(x)
+            $(this).text(y);$(this).css('text-align','right')
+
+        })//end of function.
+        //gives values with commas to rows which having class-p_1000.
+
+        function numberWithCommas(x) {
+            
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }//end of function.
+        //gives values with commas.
+
+        function moveScroll() {
+            var scroll = $(window).scrollTop();
+            var anchor_top = $("#maintable").offset().top;
+            var anchor_bottom = $("#bottom_anchor").offset().top;
+            if (scroll > anchor_top && scroll < anchor_bottom) {
+                clone_table = $("#clone");
+                if (clone_table.length == 0) {
+                    clone_table = $("#maintable").clone();
+                    clone_table.attr('id', 'clone');
+                    clone_table.css({
+                        position: 'fixed',
+                        'pointer-events': 'none',
+                        top: 0
+                    });
+                    clone_table.width($("#maintable").width());
+                    $("#table-container").append(clone_table);
+                    $("#clone").css({ visibility: 'hidden' });
+                    $("#clone thead").css({ visibility: 'visible', 'pointer-events': 'auto' });
+                }
+            } else {
+                $("#clone").remove();
+            }
+        }
+        $(window).scroll(moveScroll);
+
+    })
+    </script>
+
+
+
+<style>
+    
+
+body { height: 1000px; }
+thead{
+    background-color:white;
+}
+</style>

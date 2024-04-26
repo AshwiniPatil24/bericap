@@ -1,0 +1,72 @@
+﻿ @model FreightApp.Models.LOGIN
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@{
+    Layout = null;
+}
+
+@* <script src="~/Scripts/jquery-3.1.0.min.js" type="text/javascript"></script>*@
+@*    <script src="~/Scripts/jquery-3.1.0.js"></script>
+    <script src="~/Scripts/jquery-3.1.0.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>*@
+  @*  <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />*@
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+   @* <script src="~/Scripts/bootstrap.js" type="text/javascript"></script>*@
+    @*<script src="~/Scripts/bootstrap.min.js" type="text/javascript"></script>*@
+@*    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+@using (Html.BeginForm("Index", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="example3" style="margin-top:0px">
+     <nav class="navbar navbar-default navbar-static-top" @*style="background-color:deepskyblue"*@>
+    <div class="container-fluid" >
+     
+        <a class="navbar-brand" href="http://www.bericap.com//" >
+            <img src="~/Content/Bericap_logo.png" style="padding-bottom:20px"/>@*<i><b><u style="font-size:30px; color:#2b6392; font-family:'Arial Black'">BERICAP</u></b></i>*@  </a>
+        
+
+@*       *@
+          <div id="navbar3" class="navbar-collapse collapse">
+              
+    <ul class="nav navbar-nav navbar-right" >
+        <li class="dropdown"> <a class="dropdown-toggle" href="#" style ="color:white"><span class="glyphicon glyphicon-user"></span> @Session["userid"] <b class="caret" style="color:white"></b></a>
+                    <ul class="dropdown-menu" >
+                         <li><a  href="@Url.Action("Logout","Login")"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                    </ul>
+          </li>
+         </ul> 
+              </div>
+         
+        </div>
+         <h1 style="margin-left:40%;font-size:40px;color:#081c94; font-family:'Berlin Sans FB'"><b> <H2>Application Catalog</H2>   </b></h1>
+         </nav>
+ </div>
+     
+    <div style="margin-left:35%;margin-top:10%">
+       
+    
+   @foreach(var val in @ViewBag.applist)
+   {
+       
+     <input type="submit" name="app" style="width:200px;margin-left:12%" value=@val class="btn btn-success"/>
+   }
+      
+
+    </div>
+}
+      
+<style>
+    .navbar-static-top {
+  
+    background-color:#12d3cd;
+    }
+
+</style> 

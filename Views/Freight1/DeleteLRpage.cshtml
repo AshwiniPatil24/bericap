@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "DeleteLRpage";
+}
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+<h2>Delete LRs from Sales Register</h2>
+
+<div>
+<input type="text" value="" placeholder="Enter Lr No." id ="deleteLR"/>
+<input type="button" value="Delete" id ="delete"/>
+</div>
+<div id="sa">
+
+</div>
+ 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#deleteLR").change(function () {
+            var LrNo = $("#deleteLR").val();
+           // alert(LrNo);
+
+            $.ajax({
+                url: '@Url.Action("getLR_s")',
+                data: { LrNo: LrNo }, type: 'POST',
+                success: function (data)
+                {
+                    //alert(data)
+                    $("#sa").html(data);
+                }
+            })
+        });
+
+        $("#delete").click(function () {
+            var LrNo = $("#deleteLR").val();
+            $.ajax({
+                url: '@Url.Action("deletelr")', data: { LrNo: LrNo }, type: 'POST', success: function (p) { alert(p); }
+            })
+         });
+        
+    })
+    </script>

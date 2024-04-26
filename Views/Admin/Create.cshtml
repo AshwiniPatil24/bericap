@@ -1,0 +1,97 @@
+﻿@model FreightApp.Models.LOGIN
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Add User</h2>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+
+        <table class="table table-bordered table-hover">
+
+            <tr>
+      <td>UserId:
+        
+        <td><div class="editor-field">
+            @Html.TextBoxFor(model => model.USERID, new { id="uid"})
+            @Html.ValidationMessageFor(model => model.USERID)
+        </div>
+
+      </tr>
+
+            <tr>
+     
+           <td> Employee ID </td>
+        
+         <td> <div class="editor-field">
+            @Html.TextBoxFor(model => model.REGID, new { id="regid"})
+            @Html.ValidationMessageFor(model => model.REGID)
+        </div></td>
+
+        </tr>
+
+            <tr>
+        <td>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+            </td>
+        </tr>
+<tr><td> <div>
+    @Html.ActionLink("Back to List", "Index")
+</div></td></tr>
+   
+    </table>
+}
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+       
+        $("#uid").change(function () {
+          
+            var uid = $("#uid").val();
+           
+            var rootUrl = '@Url.Content("~")'
+           
+          $.get(rootUrl+ '/Admin/chkUniqueUser/', { userid: uid, flag: "userid" }, function (p) {
+                if (p != "N") {
+                    alert("UserId already Exist. Please enter another UserId.");
+                    $("#uid").val("");
+                    $("#uid").focus();
+                }
+
+
+                else {
+                    $("#regid").focus();
+                }
+        });
+
+        });
+
+        $("#regid").change(function () {
+            
+            var uid1 = $("#regid").val();
+
+            var rootUrl = '@Url.Content("~")'
+           
+          $.get(rootUrl+ '/Admin/chkUniqueUser/', { userid: uid1, flag: "regid" }, function (p) {
+                if (p != "N") {
+                    alert("EmployeeId already Exist. Please enter another EmployeeId.");
+                    $("#regid").val("");
+                    $("#regid").focus();
+                }
+               
+            });
+
+                });
+
+    });
+</script>

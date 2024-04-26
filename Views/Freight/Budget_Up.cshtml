@@ -1,0 +1,121 @@
+﻿@model FreightApp.Models.BUDGET
+
+@{
+    ViewBag.Title = "Budget_Up";
+}
+<hr />
+ <input type="text"  value='@Session["bdoption"].ToString()' id="bdoption"  hidden="hidden"/>
+<div class="col-md-12">
+    <div class="panel with-nav-tabs panel-primary">
+        <div class="panel-heading">
+            <ul class="nav nav-tabs" style="font-size:14px">
+
+                <li class="active"><a href="#bud" data-toggle="tab" id="bud1" class="navtav">Budget Upload</a></li>
+                  <li><a href="#blk" data-toggle="tab" id="blk1" class="navtav">Unlock Budget</a></li> 
+            </ul>
+        </div>
+        <div class="panel-body">
+            <div class="tab-content" >
+               @* -----------------------------------------------Budget Upload--------------------------------------- *@
+       <div  id="bud" class="tab-pane fade in active">
+                      @using (Html.BeginForm("File_Upload", "Freight", FormMethod.Post,
+                         new { enctype = "multipart/form-data" }))
+                      {
+                    <div>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                      <input type="file" name="fileupload" /></td>
+                                                    <td>
+                                                        <input type="submit" name="btn" value="Upload" class="btn btn-primary" />
+                                                    </td>
+                                                </tr>
+                                            </table>
+                        
+                    </div> 
+                      }
+                    <div id="bud2">  
+                        @ViewBag.feedback
+
+                    </div>
+                </div>
+
+
+@* -------------------------------------------------------Unlock------------------------------------------------------ *@
+
+  <div  id="blk" class="tab-pane ">
+          
+              
+
+      
+      <div id="blk2">
+          @ViewBag.feedback
+      </div>             
+
+        
+         </div>          
+
+    </div>
+ </div>
+        </div>
+    </div>
+<script type="text/javascript">
+   
+    $(document).ready(function () {
+        var flg1 = $("#bdoption").val();
+        
+        partialdisp1(flg1)
+        activaTab1(flg1)
+
+        $(".navtav").click(function () {
+            var flag = $(this).attr("id"); flag = flag.substring(0, 3);
+            
+            partialdisp1(flag)
+
+        });
+
+        function activaTab1(tabId) {
+            $('.nav-tabs a[href="#' + tabId + '"]').tab('show');
+
+        };
+        function partialdisp1(flag) {
+            
+            switch (flag) {
+                case "bdu": $("#blk2").hide(); $("#bdu2").show();
+                    
+                    break;
+                case "blk": $("#bdu2").hide(); $("#blk2").show();
+                  
+                    $.ajax({
+                        url: '@Url.Action("allBudget")', type: 'POST', success: function (data) { $("#blk2").html(data); }
+                    })
+                    break;
+                default:   $("#blk2").hide(); $("#bdu2").show();
+                     
+                    break;
+            }
+
+
+        }
+
+
+
+
+    });
+
+
+</script>
+
+<style>
+    .floating-box {
+        display: inline-block;
+        width: 100px;
+        height: 70px;
+        border: 1px solid #0a185c;
+    }
+
+    .container {
+        border: 1px solid #0a185c;
+    }
+   
+</style>

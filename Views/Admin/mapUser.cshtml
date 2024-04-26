@@ -1,0 +1,169 @@
+﻿@model IEnumerable<FreightApp.Models.APPMATRIX>
+
+@{
+    ViewBag.Title = "mapUser";
+}
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-dialog.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-dialog.css" rel="stylesheet" />
+
+
+<div class="panel panel-default">
+    <div class="col">
+        <div class="col-md-8 ">
+            <div class="panel-heading">
+                <h4>Application List</h4>
+            </div>
+
+            <div class="btn-group" data-toggle="buttons">
+                @foreach (var ap in ViewBag.applist)
+                {
+    
+                    <input type="radio" name="options" class="rad" value="@ap"/>@ap<br />
+                }
+            </div>
+            <br />
+            <br />
+            <hr />
+            <div>
+                <h4>User List</h4>
+                @foreach (var usr in ViewBag.usrlist)
+                {
+    
+                    <input type="checkbox"class="chk" value="@usr"/>@usr<br />
+                }
+            </div>
+
+            <div>
+                <input type="button" class="btn btn-primary " id="sav" value="Add" /></div>
+        </div>
+    </div>
+
+
+
+    <div class="col">
+        <div class="col-md-4">
+            <div class="panel-heading">
+                Detail List
+            </div>
+
+            <table class="table-condensed table-bordered">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.APPNAME)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.USERID)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.APPNAME)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.USERID)
+                        </td>
+                       @if (item.USERID == "admin")
+                       {<td></td> }
+                     else
+                       {
+                        <td>
+                            @Html.ActionLink("Delete", "mapUser_Delete", new { id = item.ID })
+                        </td>
+                       }
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $selectedusr = new Array();                                     //global variable for user
+        $selectedapp = "";                                              //global variable for user
+
+        $("#sav").click(function () {                                   //btn click function
+           
+            var usr = '';
+            for (var i = 0; i < $selectedusr.length; i++) {
+                usr = usr + ',' + $selectedusr[i];
+            }
+            usr = usr.substring(1, usr.length);
+            var app = $selectedapp;
+            if (usr == "" || app == "")
+            { alert("Please Select AppName and Username...!!") }
+            else {
+
+                var rootUrl = '@Url.Content("~")'
+              $.get(rootUrl+'/Admin/mapUser_save/', { usr: usr, app: app }, function (p) {
+                    if (p == "Success") {
+                        FreightApp.reload();
+                    }
+                    else {
+                        alert(p)
+                    }
+                })
+            }//end of else
+        });
+
+
+
+        $(".rad").click(function () {                                   //radio btn click function
+
+            var checked = $(this).attr('checked', true);                    //take only checked values in  $selectedapp
+            if (checked) {
+
+                $(this).prop("checked", true)
+                $selectedapp = $(this).val();
+            }
+        })
+
+
+        $(".chk").click(function () {                               //checkeBox Click function(
+            var usr = $(this).val();
+            if ($(this).prop("checked")) {                            //take checked values 
+
+                $selectedusr.push(usr);                                  //pop the checked values one bye on as we have taken list of user
+
+            }
+            else {
+
+                $selectedusr.splice($.inArray(usr, $selectedusr), 1);       //remove the uncheked values 
+
+            }
+
+
+
+        });
+
+
+    });
+</script>
+
+
+
+<style>
+    hr.style-four {
+        color: blue;
+        height: 12px;
+        width: 10px;
+        border: 0;
+        box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+    }
+</style>

@@ -1,0 +1,155 @@
+﻿@model FreightApp.Models.CONTRACT_M
+
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+@using (Html.BeginForm("contr_Create_save", "Freight", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+   <table class="table table-bordered table-hover">
+       <tr  hidden="hidden"><td><input type="text" name="veh" id="veh" /></td></tr>
+           <tr  hidden="hidden"><td><input type="text" name="veh" id="dest" /></td></tr>
+    <tr>
+             <td>
+     Vehicle Name:
+        </td>
+
+
+      <td>
+            @Html.DropDownList("veh",null, String.Empty, new {id="vehi_nm" })
+            @Html.ValidationMessageFor(model => model.VEH_NAME)
+        </td>
+            </tr>
+
+
+     <tr>
+          <td>
+            Month:
+    </td>
+      <td>
+           @Html.TextBoxFor(model => model.MONTYR, new { @class="date-picker",id="mmmyy"})
+        @*  <input type="text" name="mmmyy" id="mmmyy" class="date-picker" value="" required="required" />*@
+            @Html.ValidationMessageFor(model => model.MONTYR)
+    </td>
+    </tr>
+
+       <tr>
+        <td>
+           Amount:
+    </td>
+      <td>
+            @Html.TextBoxFor(model => model.AMOUNT, new { @type="number"})
+            @Html.ValidationMessageFor(model => model.AMOUNT)
+    </td>
+           </tr>
+
+   
+
+       <tr>
+        <td>
+           Destination:
+    </td>
+      <td>
+          @Html.DropDownList("destn",null, String.Empty, new {id="destn" })
+            @Html.ValidationMessageFor(model => model.DESTINATION)
+       </td>
+           </tr>
+       <tr>
+        <td>
+           Contract Date:
+    </td>
+      <td>
+           @Html.TextBoxFor(model => model.DTUPDATED,  new { @class="date-picker1",id="mmmyy1"})
+            @Html.ValidationMessageFor(model => model.DTUPDATED)
+       </td>
+           </tr>
+
+
+ <tr>
+           <td colspan="2"> <button type="submit" value="Add" id="sv" class="btn btn-primary ">Add</button></td>
+        </tr>
+  </table>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    $("#vehi_nm").change(function () {
+           
+
+        var selectedValue = $(this).val();
+       
+      $("#veh").val(selectedValue);
+   
+    });
+
+
+    $("#destn").change(function () {
+        var selectedValue = $(this).val();
+
+        $("#destn").val(selectedValue);
+
+    });
+    
+
+    $(function () {
+
+
+        $('.date-picker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'M-y',
+            onChangeMonthYear: function (dateText, inst) {
+                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(year, month, 1));
+
+            }
+        });
+
+        $('.date-picker1').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'yy-mm-dd',
+            onChangeMonthYear: function (dateText, inst) {
+                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(year, month, 1));
+
+            }
+        });
+    });
+
+
+    });
+
+
+
+</script>
+<style>
+
+ input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+
+    }
+
+
+
+  .table {
+     background-color: #d7f1ee;
+}
+    </style>

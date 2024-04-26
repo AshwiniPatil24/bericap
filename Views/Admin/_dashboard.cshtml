@@ -1,0 +1,89 @@
+﻿@model IEnumerable<FreightApp.Models.ACCESSMATRIX>
+
+
+
+ 
+<table class="table">
+    @{var i = 0;}
+     @{var f =false;}
+       @foreach (var item1 in @ViewBag.user)
+          {
+              
+           if(i==0)
+           {
+              <tr>
+                  <th>User/View=></th>
+                  @foreach (var item2 in @ViewBag.appv)
+                  {
+                       <th>@item2</th>
+                  }
+              </tr>
+             }
+       else{
+            <tr class="trr">
+                  <td class="tdd">@item1</td>
+                         @foreach (var item2 in @ViewBag.appv)
+                         {
+                             f = false;                     
+                             <td class="tdd">
+                             @foreach (var item3 in Model) {
+                              if (item1 == item3.USERID && item2==item3.APP_VIEW) 
+                             {
+                                   
+                                    
+                                 <input  type="checkbox" checked="checked" class="chkbox" /> 
+                                 f = true;
+                                 break;
+                 
+                             }
+                            
+                                 
+                            }
+                                 @if(f== false)
+                                 {
+                                     <input  type="checkbox" class="chkbox" /> 
+                                 }
+                            </td>
+                         }
+                        </tr>
+             }
+              i++;
+       }
+
+</table> 
+<input type="button" value="Save" id="btn_sv" />
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btn_sv").click(function () {
+            var arr = [];
+            p = "";
+            $("tr").each(function () {                         
+                var u=$(this).find("td:first").html();
+                  
+                $(this).find("td:not(:first)").each(function () {
+                    var i = $(this).index();
+                    var c = $(this).find('input').is(':checked');
+                    if (c){ c = "c"; }else {  c = "u"; }                  
+                   var v = $(this).closest('table').find('th').eq(i).html();
+                    var a = u + ',' + v + ',' + c;
+                    p = p + ';' + a;
+                  
+                })// end of  $(".tdd").each
+            })// end of  $(".trr").each
+            p = p.substring(1, p.length)
+            if (p == "") { }
+            else {
+                var rootUrl = '@Url.Content("~")'
+                $.get(rootUrl+'/Admin/save_access/', { p: p }, function (p) {
+                    if (p == "Success") {
+                        FreightApp.reload();
+                    }
+                });//end of get method
+            } //end of p blank condition
+        }); //end of $("#btn_sv").click
+
+    });//document ready 
+
+
+</script>

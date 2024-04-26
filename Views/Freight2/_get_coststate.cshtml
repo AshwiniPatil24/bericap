@@ -1,0 +1,319 @@
+﻿@model IEnumerable<FreightApp.Models.SALES>
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+ <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+ <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+<table  class="table table-bordered " style="background-color:#2f8fe1;color:white">
+    <tr>
+
+         <td colspan="2"><b>Transporter Name  : </b> &nbsp;&nbsp;&nbsp; @ViewBag.venname </td>  <td><b>Transporter Code  :@ViewBag.vencode </b>   </td>  
+    </tr>
+    <tr> <td colspan="2"> <b> Customer :      </b>  @ViewBag.Customer </td>
+         <td><b>Box Quantity:</b>@ViewBag.boxqty &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b> Destination  :  </b>   @ViewBag.location </td>
+    </tr>
+    <tr>
+        <td colspan="2"><b>VehicleType : </b>@ViewBag.veh &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b> Vehicle No  : </b> @ViewBag.VehicleNo </td>     
+        <td> <b>Loadability: </b> @ViewBag.load  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <b>LR No  : </b> @ViewBag.lr</td>
+    </tr>
+</table>
+ 
+
+<table class="table table-bordered" style="font-size:small;width:1000px">
+    <tr  style="background-color:#07285b;color:white">
+         <th  hidden="hidden" ></th>
+        <th>
+          Reference
+        </th>         
+        <th>
+           Material No.
+        </th>
+        <th>
+           Material Desc.
+        </th>
+        <th colspan="2">
+           Hierarchy  
+         
+        </th>
+        <th>
+            Billed Qty.
+        </th>
+        <th>
+           No.Boxes
+        </th>     
+        <th>
+            Freight
+        </th>
+        <th hidden="hidden"></th>
+         <th hidden="hidden"> @Html.DisplayNameFor(model => model.LR_NO)</th>
+        
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr  class="tr1">
+         <td  hidden="hidden" id="mainid">
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REF_NO)
+        </td>
+         
+        <td>
+            @Html.DisplayFor(modelItem => item.MAT_NO)
+        </td>
+        <td style="font-size:x-small"><b>
+
+            @Html.DisplayFor(modelItem => item.MAT_DESC)
+                                      </b>
+        </td>
+        <td colspan="2" style="font-size:x-small">
+         <b>
+            @Html.DisplayFor(modelItem => item.HIE_NO)-@Html.DisplayFor(modelItem => item.HIE_DESC)
+         </b>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_QTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BOX_QTY)
+        </td>       
+        <td>
+            @Html.DisplayFor(modelItem => item.FREIGHT)
+        </td>
+        <td id="part" hidden="hidden">
+            @Html.DisplayFor(modelItem => item.MNS_TRANSTY)
+        </td>
+        <td id="lrno" hidden="hidden">
+            @Html.DisplayFor(modelItem => item.LR_NO)
+        </td>
+        
+    </tr>
+}
+
+    
+    <tr style="background-color:#c6ebf2"> <td colspan="2">Empty Loss :</td> <td colspan="2"><input type="text" id="els"  value="@ViewBag.empls" readonly="readonly"/></td> <td></td> <td colspan="2">Total :</td>
+        @if (ViewBag.part=="F")
+        {
+        <td ><input type="number" id="frt1"  value="@ViewBag.freight" readonly="readonly"/></td>
+        }
+        else
+        {
+        <td ><input type="number" id="frt2"  value="@ViewBag.freight" /></td>
+        }
+       
+    </tr>
+   <tr style="background-color:#c6ebf2"> <td  colspan="2">Empty Loss Reason :</td> <td> @Html.DropDownList("Empdropdown", (IEnumerable<SelectListItem>)ViewBag.emplsrsn,  new { @id = "eloss" })</td><td></td> <td></td> <td colspan="2">Other Charges :</td> <td><input type="number" id="otherc" value="@ViewBag.otherchg"/></td></tr>
+     
+ <tr style="background-color:#c6ebf2"> <td  colspan="2">Penalty :</td> <td><input type="number" id="pnlty" value="@ViewBag.penalty" /> </td><td></td> <td></td><td colspan="2">Detention :</td> <td><input type="number" id="dtn" value="@ViewBag.detn"/> </td></tr>
+    
+
+
+  <tr style="background-color:#c6ebf2"> <td colspan="2">Penalty Note</td> <td>@Html.DropDownList("Empdropdown", (IEnumerable<SelectListItem>)ViewBag.penaltynote,  new { @id = "pnote" })</td> <td></td><td></td><td colspan="2">Detention Note</td> <td>        @Html.DropDownList("dtnotedropdown", (IEnumerable<SelectListItem>)ViewBag.dnote1,  new { @id = "dnote" })</td></tr>
+     
+  
+       <tr style="background-color:#c6ebf2"> <td colspan="2">Bill No.</td> <td><input type="text" id="bilno" value="@ViewBag.bilno"/> </td> <td></td>  <td></td><td colspan="2">Billed Charges</td> <td ><input type="number" id="bilc" readonly="readonly" value="@ViewBag.totalfreight" s/></td></tr>
+           <tr style="background-color:#c6ebf2"> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td><td></td> <td><input type="button" class="btn btn-success"id="knk" value="Knock Off" /></td></tr>
+   
+   
+ 
+
+    </table>
+<input type="text" value="@ViewBag.status" id="sts" hidden="hidden"/>
+<input type="number" id="frt"  value="@ViewBag.freight" hidden="hidden"/>  
+  <div class="modal fade" id="myModal1" role="dialog">
+     <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+       
+        <div class="modal-body">
+            <div>
+                 Are you sure you want to Knock Off? 
+             </div>
+         
+        </div>
+        <div class="modal-footer">
+             <button type="button" id="yes" class="btn btn-success" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+<input type="text" id="dnt" value="" hidden="hidden"/>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $frt = parseFloat( $("#frt").val());
+        sumup();
+        var sts = $("#sts").val();
+        if (sts == "K") {
+            disableall();
+        }
+        function disableall() {
+            $("#frt2").prop('disabled', true);
+            $("#otherc").prop('disabled', true);
+            $("#dtn").prop('disabled', true);
+            $("#pnlty").prop('disabled', true);
+            $("#pnote").attr('disabled', 'disabled');
+            $("#dnote").attr('disabled', 'disabled');
+            $("#eloss").attr('disabled', 'disabled');
+            $("#knk").prop('disabled', true);
+            $("#knk").css('background-color', 'Red');
+            $("#bilno").attr('disabled', 'disabled');
+        }
+        $("#knk").click(function () {
+            var pn = $("#pnote").val().trim();
+            var dn = $("#dnote").val().trim();
+            var en = $("#eloss").val();
+            var els = $("#els").val();
+            var pen = $("#pnlty").val().trim();
+            var den = $("#dtn").val().trim();
+            var bn = $("#bilno").val().trim();
+
+            var fl = "";
+            if (en == "Enter Reason!!" || pn == "Enter Reason!!" || dn == "Enter Reason!!") { fl = "N"; }
+            else if (en == "No EmptyLoss" && (els > 0 || els < 0)) {  fl = "E"; }
+            else if (pn == "No Penalty" && (pen > 0 || pen < 0)) {  fl = "P"; }
+            else if (dn == "No Detention" && (den > 0 || den < 0)) {fl = "D"; }
+            else if (dn.substring(0, 10) == "Updated By") { fl = "N"; }
+            else if (pn.substring(0, 10) == "Updated By") { fl = "N"; }
+            else if (bn.substring(0, 10) == "") { fl = "B"; }
+            else { }
+            if (fl == "N") { alert("Please enter Reason for Detention/Empty Loss or Penalty before you Knock Off the invoices.") }
+            else if (fl == "E") { alert("You can not update 'No EmptyLoss' for non zero Empty Loss.") }
+            else if (fl == "P") { alert("You can not update 'No Penalty' for non zero Penalty.") }
+            else if (fl == "D") { alert("You can not update 'No Detention' for non zero Detention.") }
+            else if (fl == "B") { alert("Please update bill number.") }
+            else { $('#myModal1').modal('toggle'); }
+            
+        });
+        $('#otherc,#dtn,#pnlty,#dnote,#pnote,#frt2,#eloss,#bilno').on('change', function () {
+           
+            var idd = $("#lrno").text().trim();
+            var validd = $(this).attr("id");
+            var val = $(this).val();
+            var flag = true;
+            if (validd=="frt2")
+            {
+                $frt = parseFloat( val);
+                $("#frt").val(val);
+            }
+            else if (validd == "eloss")
+            {
+                var els = $("#els").val();
+                
+                if (els != 0 && val == "No EmptyLoss")
+                {
+                    alert("Please select reason No EmptyLoss if empty loss is 0!! ");
+                    flag = false;
+                }
+            }
+            if(flag)
+            {
+
+           
+                sumup();
+         
+                $.ajax
+                    ({
+                    url: '@Url.Action("savevals")',
+                    data: { idd: idd, validd: validd, val:val },
+                    type: 'POST',
+                    success: function (p)
+                    {
+                        if (p == "Success")
+                        {
+                            sumup();
+                            if (validd == "frt2")  {  }
+                        }
+
+                        else if (p == "Fail") { alert("Please try again !! "); }
+                        else if (p == "Status-K") { alert("Values can not be changed for knowed off invoices!! "); }
+                        else { $("#dtn").val(p); sumup(); }
+                     }
+               
+                    })
+             }
+        
+        })
+
+
+        function sumup() {
+           
+            var otherc = $("#otherc").val();
+            var oc = parseFloat(otherc);
+
+            var pnlty = $("#pnlty").val();
+            var pn = parseFloat(pnlty);
+
+            var dtn = $("#dtn").val();
+            var dn = parseFloat(dtn);
+
+            var dnote=$("#dnote").val();
+
+            var lrno = $("#lrno").text();
+            var pnote = $("#lrno").text();
+               
+            var bilc = dn + $frt + oc;
+             
+            $("#bilc").val(bilc);
+
+        }
+        $('#yes').on('click', function () {
+            
+            var idd = $("#lrno").text().trim();
+            var validd = "bilc";
+            var val = $("#bilc").val(); 
+            $.ajax({
+                url: '@Url.Action("savevals")',
+                data: { idd: idd, validd: validd, val: val },
+                type: 'POST',
+                success: function (p) {
+                    if (p == "Success") {
+                        alert("Invoices has been successfully knocked off.");
+                        disableall();
+                        $('#btnsub').trigger('click');
+                    }                    
+                    else if (p == "Status-K") { alert("Values can not be changed for knowed off invoices!! "); }
+                    else { alert("Please try again ... !!"); }
+                }
+            })
+
+         
+        })
+
+        function checkblank(idd, validd, val) {
+            p = "";
+            if (val = "") { p = "Value Can not be blank.";}
+            else if (validd == "") { p = "Value Can not be blank.";}
+            else if (idd == "") { p = "Value Can not be blank.";}
+            else {p="" }
+            return p;
+        }
+
+       
+
+    })
+
+ 
+    </script>
+
+
+<style>
+        input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+
+    }
+          
+</style>

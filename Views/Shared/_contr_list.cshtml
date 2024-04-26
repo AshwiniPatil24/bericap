@@ -1,0 +1,66 @@
+﻿@model IEnumerable<FreightApp.Models.CONTRACT_M>
+
+<div class="panel panel-default">
+    <div class="col">
+        <div class="col-md-8  well partl" style="overflow-y: scroll; display: block; ">
+          
+ <table class="table-bordered table-striped  " id="header-fixed">
+    <thead>
+                    <tr class="hd">
+                        <th hidden="hidden">ID</th>
+        <th>
+          Vehicle  Name
+        </th>
+
+        
+        <th>
+            ---Rate---
+        </th>
+       
+        <th>
+           ---Destination---
+        </th>
+                        <th>
+           Month-Year
+        </th>
+        <th>
+           Date created 
+        </th>
+
+     
+    </tr>
+        </thead>
+ <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="trindex">
+                            <td hidden="hidden">
+                                @Html.DisplayFor(modelItem => item.ID)
+                            </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VEH_NAME)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.AMOUNT)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.DESTINATION)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.MONTYR)
+        </td>
+                            <td>
+            @Html.DisplayFor(modelItem => item.DTUPDATED)
+        </td>
+    
+    </tr>
+                    }
+
+  </tbody>
+            </table>
+        </div>
+    </div>
+    </div>

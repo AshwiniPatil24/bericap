@@ -1,0 +1,196 @@
+﻿@model IEnumerable<FreightApp.Models.DIESELCOSTREP>
+
+<div><table   style="width:15%;color:#1977eb ;text-align:right" class="table " >
+     <tr > <th> Total Contract Amount  </th><td class="p_1000"> <b>@ViewBag.cntramt</b>   </td>  </tr>
+     <tr > <th> Total Diesel Cost  </th><td class="p_1000"> <b>@ViewBag.dslcost</b>   </td>  </tr>
+       <tr > <th> Average %  </th><td class="p_1000"> <b>@ViewBag.avgper%</b>   </td>  </tr>
+    </table>
+    </div>
+
+
+
+ 
+
+@*<table  style="width:70%" class="table table-hover table-striped table-scroll">*@
+
+<div id="table-container" >
+<table id="maintable" class="table table-hover table-striped table-scroll"  style="width:60%;font-size:small">
+    <thead>
+    <tr style="background-color:deepskyblue">
+        <th>
+            Transporter 
+        </th>
+        <th>
+           Name
+        </th>
+        <th>
+           Ship to Party code
+        </th>
+        <th>
+          Ship to party name
+        </th>
+        <th>
+          Ship to Party Lcn
+        </th>
+        <th nowrap>
+         Billing Doc
+        </th>
+        
+        <th>
+          Lr No
+        </th>
+        <th>
+           Bill Date
+        </th>
+        <th>
+          Vehicle name
+        </th>
+        <th>
+         Km
+        </th>
+        <th>
+          Contract Amt
+        </th>
+        <th>
+           Fuel Avg
+        </th>
+        <th>
+           Diesel Cost
+        </th>
+        <th>
+          % Cost
+        </th>
+        
+    </tr>
+        </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.VENDOR_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VENDOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STP_CODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STP_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STP_LCN)
+        </td>
+        <td >
+            @Html.Raw(item.BILL_DOC.Replace(",", "<br>"))
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.LR_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_DT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VEH_NAME)
+        </td>
+                <td class="p_1000">
+            @Html.DisplayFor(modelItem => item.DIST_KM)
+        </td>
+               <td class="p_1000">
+            @Html.DisplayFor(modelItem => item.CNTR_AMT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FUEL_AVG)
+        </td>
+                <td class="p_1000">
+            @Html.DisplayFor(modelItem => item.COST_DIE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COST_PER)%
+        </td>
+      
+    </tr>
+}
+</tbody>
+</table>
+
+
+    
+<div id="bottom_anchor"></div>
+</div>
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+ 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('tr').find(".p_1000").each(function () {
+            var x = $(this).text();
+
+            var y = numberWithCommas(x)
+            $(this).text(y);$(this).css('text-align','right')
+
+        })//end of function.
+        //gives values with commas to rows which having class-p_1000.
+
+        function numberWithCommas(x) {
+            
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }//end of function.
+        //gives values with commas.
+
+
+
+        function moveScroll() {
+            var scroll = $(window).scrollTop();
+            var anchor_top = $("#maintable").offset().top;
+            var anchor_bottom = $("#bottom_anchor").offset().top;
+            if (scroll > anchor_top && scroll < anchor_bottom) {
+                clone_table = $("#clone");
+                if (clone_table.length == 0) {
+                    clone_table = $("#maintable").clone();
+                    clone_table.attr('id', 'clone');
+                    clone_table.css({
+                        position: 'fixed',
+                        'pointer-events': 'none',
+                        top: 0
+                    });
+                    clone_table.width($("#maintable").width());
+                    $("#table-container").append(clone_table);
+                    $("#clone").css({ visibility: 'hidden' });
+                    $("#clone thead").css({ visibility: 'visible', 'pointer-events': 'auto' });
+                }
+            } else {
+                $("#clone").remove();
+            }
+        }
+        $(window).scroll(moveScroll);
+
+
+
+
+    })
+    </script>
+
+
+    <style>
+        
+
+body { height: 1000px; }
+thead{
+    background-color:white;
+}
+    </style>

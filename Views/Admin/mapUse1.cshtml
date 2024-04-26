@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FreightApp.Models.APPMATRIX>
+
+@{
+    ViewBag.Title = "mapUser";
+}
+
+
+    
+
+  @using (Html.BeginForm("mapUser", "Admin", FormMethod.Post))
+{
+   
+
+     
+
+<input type="submit" name="btn" value="Map"  id="map"/>
+      <input type="text" name="uidsel" value="" id="uid" />
+  
+      if (ViewBag.applist != null)
+      {
+<table>
+@foreach (var applist in ViewBag.applist)
+{
+    <tr>
+        <td>
+    @applist
+            </td>
+        </tr>
+}
+    </table>
+}
+
+  
+
+  }
+<script type="text/javascript">
+    $(document).ready(function () {
+      
+        $("#uid_dd").on('select',function () {
+            var u = $(this).val();
+            alert(u);
+            $("#uid").val(u);
+
+        });
+    });
+    </script>

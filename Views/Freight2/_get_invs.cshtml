@@ -1,0 +1,102 @@
+﻿@model IEnumerable<FreightApp.Models.SALES>
+<div style="display:inline-flex"> 
+
+
+<div > 
+<input id="input1" type="text" hidden="hidden" />        
+
+<table class="table table-bordered " style="text-align:center">
+    <tr  style="background-color:#07285b;color:white">     
+       <th>
+          SAP Billing Date
+        </th> 
+        <th>
+             Status 
+        </th>
+        <th>
+         LR NO
+        </th>
+         
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="row1">
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_DT)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.LR_NO, new {@id="lr" })
+        </td>
+    </tr>
+}
+
+</table>
+</div>
+<div id="partialinv"> </div>
+</div>
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+ 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var lr = $("#lr").val();
+
+        $(".row1").click(function () {
+           
+            var billdt = $(this).find("td:first").text().trim(); 
+            var lrno = $(this).find("td:last").text().trim();
+
+            $(this).parent().children().removeClass("selected");
+            $(this).addClass("selected");
+            
+            if (billdt != null || billdt != "") {
+                if (lrno != null || lr != "") {
+                    getinvs(billdt, lrno);
+                }
+                else { alert("LR No. can not be blank!! ") }
+            } else { alert( "Bill no. can not be blank!!") }
+
+        })
+
+        function getinvs(billdt, lrno) {
+ 
+            $.ajax({
+                url: '@Url.Action("get_coststate")', data: { billdt: billdt, lrno: lrno }, type: 'POST', success: function (data) {
+                   
+                    $("#partialinv").html(data);
+                    window.scrollTo(0,0)
+                
+                }
+            })
+        }
+    })
+
+</script>
+
+
+
+<style>
+    .selected {
+    background-color:#2f8fe1;
+    color:white;
+    }
+
+    .unselect {
+    background-color:white;
+    color:black;
+    }
+</style>

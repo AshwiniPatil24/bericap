@@ -1,0 +1,77 @@
+﻿@model FreightApp.Models.APPMATRIX
+
+@{
+    ViewBag.Title = "creatApp";
+}
+
+<h2>creatApp</h2>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+
+
+    
+
+    @using (Html.BeginForm())
+    {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    
+    <fieldset>
+        <legend>APPMATRIX</legend>
+        <table class="table table-bordered table-hover">
+
+            <tr>
+                <td>Application Name:</td>
+                <td>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.APPNAME, new { id = "appname" })
+                        @Html.ValidationMessageFor(model => model.APPNAME)
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>
+                        <input type="submit" value="Create" class="btn btn-default"  />
+                    </p>
+
+                  
+
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+    }
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+    $("#appname").change(function () {
+
+        var appname = $("#appname").val();
+
+        var rootUrl = '@Url.Content("~")'
+
+      $.get(rootUrl+ '/Admin/chkUniqueApp/', { app: appname }, function (p) {
+              if (p != "N") {
+                  alert("Appname already Exist. Please enter another Appname.");
+                  $("#appname").val("");
+                  $("#appname").focus();
+              }
+
+          });
+
+    });
+</script>

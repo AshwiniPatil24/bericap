@@ -1,0 +1,92 @@
+﻿@model IEnumerable<FreightApp.Models.CONTRACT_M>
+
+ 
+<div  id="sru" class="tab-pane fade in active">
+                      @using (Html.BeginForm("File_Upload", "Freight", FormMethod.Post,
+                         new { enctype = "multipart/form-data" }))
+                                    {
+                           
+                    <div>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                       Upload File: <input type="file" name="fileupload" /></td>
+                                                    <td>
+                                                        <input type="submit" name="btn" value="Upload" class="btn btn-primary" />
+                                                    </td>
+                                                </tr>
+                                            </table>                        
+                    </div> 
+                      }
+                     <div id="sru2"> @ViewBag.feedback</div>
+                </div>
+<div>-------------------------------------------------------------------------------------------------------------------------------------------------------------------</div>
+<div>Search Contract:</div>
+@using (Html.BeginForm("TransView", "Freight1"))
+{
+    <input type ="text" name ="dest" id="dest" class="sel" placeholder="Destination" />
+    <input type ="text" name ="veh" id="veh" class="sel" placeholder="Vehicle Name" />
+}
+
+ <div id="divpartialcontr1"></div>
+
+
+        @* ------------------------------------------------------------------------------------ *@
+   @* <div class="col">
+        <div class="col-md-4">
+            <div class="panel-heading">
+                Details
+            </div>
+            <div id="divpartialcontr"></div>
+        </div>
+    </div>*@
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('.trindex').click(function () {
+
+            //  $(this).css("background-color", "blue");
+            var trid = $(this).find('td:first').text().trim();//trying to alert id of the clicked row
+            
+            if (trid == "" || trid == null) { }
+            else {
+                var rootUrl = '@Url.Content("~")'
+              $.get(rootUrl+'/Freight/contr_Edit/', { idd: trid }, function (data) {
+                    //alert(data)
+                    $("#divpartialcontr").html(data)
+
+                })
+            }
+        });
+
+        $('.sel').change(function () {
+
+            //  $(this).css("background-color", "blue");
+            var dest = $("#dest").val(); 
+            var veh = $("#veh").val(); 
+           // var yr = $("#yr").val(); 
+            //alert(dest)
+            
+                var rootUrl = '@Url.Content("~")'
+                $.get(rootUrl+'/Freight/contr_list/', { veh:veh,dest:dest }, function (data) {
+                    //alert(data)
+                    $("#divpartialcontr1").html(data)
+
+                })
+            
+         });
+
+
+    });
+</script>
+
+
+<style>
+     .partl {
+    height:550px;
+    }
+</style>

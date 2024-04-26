@@ -1,0 +1,159 @@
+﻿@model FreightApp.Models.CUSTOMER_M
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm("cust_Create_save","Freight",FormMethod.Post)) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <table class="table">
+    
+        <tr>
+          <td>
+         Customer Code:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.CUST_CODE)
+            @Html.ValidationMessageFor(model => model.CUST_CODE)
+      <td>
+          </tr>
+       
+        <tr>
+        <td>
+            Customer Name:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.CUST_NAME)
+            @Html.ValidationMessageFor(model => model.CUST_NAME)
+      <td>
+</tr>
+    
+        <tr>
+           <td>
+          Address:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.CUST_ADDR)
+            @Html.ValidationMessageFor(model => model.CUST_ADDR)
+      <td>
+</tr>
+
+
+         
+
+
+   <tr>
+            <td>
+         Destinantion:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.DESTINATION)
+            @Html.ValidationMessageFor(model => model.DESTINATION)
+      <td>
+</tr>
+     
+        <tr>  <td>
+           State:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.STATE)
+            @Html.ValidationMessageFor(model => model.STATE)
+      <td>
+</tr>
+   <tr>
+            <td>
+            Country Code:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.CNTRY_CODE)
+            @Html.ValidationMessageFor(model => model.CNTRY_CODE)
+      <td>
+</tr>
+    
+        <tr>   <td>
+           Country Name:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.CNTRY_NAME)
+            @Html.ValidationMessageFor(model => model.CNTRY_NAME)
+      <td>
+          </tr>
+
+      <tr>
+         <td>
+            City:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.CITY)
+            @Html.ValidationMessageFor(model => model.CITY)
+      <td></tr>
+
+       <tr>
+        <td>
+         Postal Code:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.POST_CODE)
+            @Html.ValidationMessageFor(model => model.POST_CODE)
+      <td></tr>
+
+      <tr>
+         <td>
+           Street:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.STREET)
+            @Html.ValidationMessageFor(model => model.STREET)
+      <td></tr>
+
+       <tr>
+        <td>
+           Tel. No:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.TELEPH)
+            @Html.ValidationMessageFor(model => model.TELEPH)
+      <td></tr>
+
+      <tr>
+         <td>
+          Fax:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.FAX)
+            @Html.ValidationMessageFor(model => model.FAX)
+      <td></tr>
+
+      <tr>
+         <td>
+            @Html.LabelFor(model => model.INDUS)
+      <td>
+        <td>
+            @Html.EditorFor(model => model.INDUS)
+            @Html.ValidationMessageFor(model => model.INDUS)
+      <td></tr>
+
+      <tr>
+         <td>
+            District:
+      <td>
+        <td>
+            @Html.EditorFor(model => model.DIST)
+            @Html.ValidationMessageFor(model => model.DIST)
+      <td>
+      </tr>
+
+        <tr>
+           <td><button type="submit" value="Add" class="btn btn-primary ">Add</button></td> 
+        </tr>
+   </table>
+}
+
+ 
+<style>
+  .table {
+     background-color: #d7f1ee;
+}
+    </style>

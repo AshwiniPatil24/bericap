@@ -1,0 +1,128 @@
+﻿@model IEnumerable<FreightApp.Models.KM_M>
+
+<div>
+    @Ajax.ActionLink("Add new ", "km_Create",
+        new AjaxOptions
+        {
+            HttpMethod = "GET",
+            UpdateTargetId = "divpartialkm",
+            InsertionMode = InsertionMode.Replace
+
+        })
+</div>
+<div class="panel panel-default " >
+    <div class="col">
+        <div class="col-md-8  well partl" style="overflow-y: scroll; display: block; ">
+    
+
+            <table class=" table1 table-bordered table-striped  " style="text-align:center" id="header-fixed">
+
+                <thead style="text-align:center">
+                    <tr class="hd" style="text-align:center">
+                        <th hidden="hidden">ID</th>
+        <th>
+            State
+        </th>
+        <th>
+            Zone
+        </th>
+        <th>
+            Destination
+        </th>
+        <th>
+            Kilometer
+        </th>
+        <th>
+            Transit Time
+        </th>
+
+    </tr>
+       </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="trindex">
+                            <td hidden="hidden">
+                                @Html.DisplayFor(modelItem => item.ID)
+                            </td>
+  <td>
+            @Html.DisplayFor(modelItem => item.ZONE_M.STATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZONE_M.ZONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DESTINATION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRANSIT_TM)
+        </td>
+      
+    
+    </tr>
+   }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @* ------------------------------------------------------------------------------------ *@
+    <div class="col">
+        <div class="col-md-4">
+            <div class="panel-heading">
+                Details
+            </div>
+            <div id="divpartialkm"></div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('.trindex').click(function () {
+
+            //  $(this).css("background-color", "blue");
+            var trid = $(this).find('td:first').text().trim();//trying to alert id of the clicked row
+            //alert(trid)
+            if (trid == "" || trid == null) { }
+            else {
+                var rootUrl = '@Url.Content("~")'
+              $.get(rootUrl+'/Freight/km_Edit/', { idd: trid }, function (data) {
+                    //alert(data)
+                    $("#divpartialkm").html(data)
+
+                })
+            }
+        });
+
+
+
+
+    });
+</script>
+
+
+
+<style>
+    .table-striped {
+        background-color: #d7f1ee;
+    }
+    .hd {
+         background-color: #abc6c6;
+    }
+    .table1 th {
+        text-align: center;
+    }
+  
+   .partl {
+    height:550px;
+    }
+
+</style>
+

@@ -1,0 +1,141 @@
+﻿@{
+    ViewBag.Title = "CostStatement";
+}
+
+<h3 ><b>Cost Allocation Screen</b></h3>
+   
+<div>
+        @Html.DropDownList("trans",null, "Select List", new { @id = "transporter",@class="btn btn-primary dropdown" })
+
+   <input type="datetime" id="datetime1" name="stdt" class="date-picker" placeholder="Select Bill-Start date"/>
+     <input type="datetime" id="datetime2" name="endt" class="date-picker" placeholder="Select Bill-End date"/>
+    
+    <input type="button" value="submit" class="btn btn-primary btn-small" id="btnsub">
+ 
+
+
+
+</div>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div id="translist"> </div>
+ 
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+      
+        $trans1 = 0;
+      
+        $("#transporter").change(function () {
+
+            var trans = $(this).val();
+            $trans1 = trans;
+            var stdt1 =  $("#datetime1").val();
+            var endt1 = $("#datetime2").val();
+            var flag=false;
+            if (stdt1 == "" && endt1 != "")
+            { flag=true;}
+            else if (stdt1 != "" && endt1 == "")
+            { flag = true; }
+            if (flag) {
+                var st = valid(stdt1, endt1);
+                if (st == "Success") {
+                    displayinvs(trans, stdt1, endt1);
+                }//end of if
+                else { alert(st) }//end of else 
+            }
+            else { displayinvs(trans, stdt1, endt1); }
+        })
+
+        $("#btnsub").click(function () {         
+         
+           var stdt1 = $("#datetime1").val();
+           var endt1 = $("#datetime2").val();
+            
+            var stdt = new Date(stdt1);
+            var endt = new Date(endt1);
+           
+
+            var trans = $trans1;
+
+
+            var st = valid(stdt1, endt1);
+            if (st == "Success") {
+                displayinvs(trans, stdt1, endt1);
+        }//end of if
+        else { alert(st) }//end of else 
+           
+          
+           
+        })
+
+        function valid(stdt1, endt1) {
+            var st = "Success";
+            var stdt = new Date(stdt1);
+            var endt = new Date(endt1);
+
+            if (stdt1 == "" || stdt1 == null || endt1 == "" || endt1 == null)
+            {
+                if (stdt1 == "" && endt1 == "") { }
+                else {2 }
+                
+            }
+            else
+            {
+               
+                var i = endt - stdt;
+                if (i < 0) { st = "Startdate can not be greater than EndDate!"; }
+               
+            }
+            return st;
+
+        }
+
+        function displayinvs(trans, stdt,endt) {
+           
+            $.ajax({
+                url: '@Url.Action("get_invs")', data: { stdt: stdt, endt: endt, trans: trans }, type: 'POST', success: function (data) {//dropdown change
+                    $("#dt").html(@ViewBag.dat);
+                    $("#translist").html(data);
+                    //alert(data);
+                    //location.reload;
+                }
+            })
+        }
+ 
+
+
+
+        $(function () {
+            $('.date-picker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'd-M-yy',
+                onChangeMonthYear: function (dateText, inst) {
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    $(this).datepicker('setDate', new Date(year, month, 1));
+
+                }
+            });
+        });
+
+
+
+
+    })
+
+    </script>

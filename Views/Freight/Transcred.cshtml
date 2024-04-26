@@ -1,0 +1,46 @@
+﻿@model IEnumerable<FreightApp.Models.TRANSLOGIN>
+
+@{
+    ViewBag.Title = "Transcred";
+}
+
+<h2>Transcred</h2>
+ 
+  <table class="table-bordered table-striped" id="header-fixed">
+    <tr>
+        <th>
+            User ID 
+        </th>
+        <th>
+           Password
+        </th>
+         
+        <th>
+            Active Status
+        </th>
+        <th>
+           Old Password
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr style="text-align:center">
+        <td>
+            @Html.DisplayFor(modelItem => item.USERID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PASSWORD)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.ACTIVESTATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FIRSTPASSWORD)
+        </td>
+        
+    </tr>
+}
+
+</table>

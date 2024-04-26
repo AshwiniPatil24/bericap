@@ -1,0 +1,106 @@
+﻿@model IEnumerable<FreightApp.Models.APPMATRIX>
+
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-dialog.js"></script>
+
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+
+
+<div class="panel panel-default">
+    <div class="col">
+        <div class="col-md-8  well " style="overflow-y: scroll; display: block; height: 400px">
+            <div class="panel-heading">
+                Application List
+            </div>
+
+            <div>
+    @Ajax.ActionLink("Create Application", "createApp",
+
+        new AjaxOptions
+        {
+            HttpMethod = "GET",
+            UpdateTargetId = "divpartialapp",
+            InsertionMode = InsertionMode.Replace
+
+        })
+</div>
+
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                    <th hidden="hidden">@Html.DisplayNameFor(model => model.ID)</th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.APPNAME)
+                    </th>
+
+
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr class="trindex">
+
+                        <td hidden="hidden">
+                            @Html.DisplayFor(modelItem => item.ID)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.APPNAME)
+                        </td>
+
+
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+
+    @* ------------------------------------------------------------------------------------ *@
+    <div class="col">
+        <div class="col-md-4">
+            <div class="panel-heading">
+                Details
+            </div>
+            <div id="divpartialapp">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+   
+    $(document).ready(function () {
+      
+
+        $('.trindex').click(function () {
+       
+
+           
+            var trid = $(this).find('td:first').text().trim();//trying to alert id of the clicked row
+          
+            if (trid == "" || trid == null) { }
+            else {
+                var rootUrl = '@Url.Content("~")'
+                $.get(rootUrl+'/Admin/createAppV/', { idd: trid }, function (data) {
+                    $("#divpartialapp").html(data)
+
+                })
+               
+            }
+        });
+
+    });
+</script>

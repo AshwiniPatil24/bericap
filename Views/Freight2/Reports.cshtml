@@ -1,0 +1,187 @@
+﻿@{
+    ViewBag.Title = "Reports";
+}
+
+
+<div style="display:inline-flex">
+    
+  
+          @{
+       var listItems1 = new List<SelectListItem>();
+       listItems1.Add(new SelectListItem { Text = "Select Report", Value = "selrep" });
+       listItems1.Add(new SelectListItem { Text = "Detention Report", Value = "detrep" });
+       listItems1.Add(new SelectListItem { Text = "Cost Statement", Value = "costrep" });
+       listItems1.Add(new SelectListItem { Text = "Transporter ScoreCard", Value = "transrep" });
+       listItems1.Add(new SelectListItem { Text = "Customer ScoreCard", Value = "cusrep" });
+       listItems1.Add(new SelectListItem { Text = "Cost Vs Recovery", Value = "corerep" });
+       listItems1.Add(new SelectListItem { Text = "Budget Vs Actual", Value = "buacrep" });
+       listItems1.Add(new SelectListItem { Text = "Diesel Cost", Value = "dierep" });
+       listItems1.Add(new SelectListItem { Text = "Diesel Cost with Total Freight", Value = "dierepfrt" });
+       listItems1.Add(new SelectListItem { Text = "Vehicle Utilization", Value = "vutilrep" });
+       listItems1.Add(new SelectListItem { Text = "Freight", Value = "scrfrtrep" });
+       
+       
+       
+ 
+}
+<div>
+     @Html.DropDownList("dtnotedropdown", listItems1, new { @id = "rep",@class="btn btn-primary btn-sm dropdown" })
+
+</div>&nbsp;&nbsp;
+
+
+
+<div id="dpicker">
+<input type="datetime" id="datetime1" name="stdt" class="date-picker dp" placeholder="Start Date" required="required"/>
+<input type="datetime" id="datetime2" name="endt" class="date-picker dp" placeholder="End Date"required="required"/>
+
+ <button type="submit" value="" class="glyphicon glyphicon-search btn btn-success" id="btnsub" ></button>
+   
+</div>
+    <span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  </span>
+    <div id="download">
+        <button type="button" value="" class="glyphicon glyphicon-download btn btn-warning"  id ="dwnld"></button>
+    </div>
+
+
+</div >
+<div  id="partial_cs" style="width:1800px">
+
+</div>
+
+
+
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $rep = ""; $id = ""; $note1 = ""; $tdd = "";
+
+        
+        $("#rep").change(function () {
+            $rep = $(this).val();
+           
+        })
+        
+        $(function () {
+            $('.date-picker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'dd-MM-yy',
+                onChangeMonthYear: function (dateText, inst) {
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    $(this).datepicker('setDate', new Date(year, month, 1));
+
+                }
+            });
+        });
+
+
+        function valid(stdt1,endt1,rep) {
+            var st = "Success";
+            var stdt = new Date(stdt1);
+            var endt = new Date(endt1);
+          
+            if (stdt1 == "" || stdt1 == null || endt1 == "" || endt1 == null) { st = "Please select date...!"; }
+            else
+            {
+                var i = endt - stdt;
+                if (i < 0) { st = "Startdate can not be greater than EndDate!"; }
+                else { if (rep == "" || rep=="selrep") { st = "Please select the report!!"; } }
+            }
+                return st;
+
+        }
+
+
+        $("#dwnld").click(function () {
+
+            var stdt1 = $("#datetime1").val();
+            var endt1 = $("#datetime2").val();
+            var stdt = new Date(stdt1);
+            var endt = new Date(endt1);
+            var rep = $rep;         
+            var st=valid(stdt1,endt1,rep);
+            if(st=="Success")
+                {
+            $.ajax({
+                url: '@Url.Action("dwnrep")',
+                 data: { stdt: stdt1, endt: endt1, rep: rep },
+                 type: 'POST',
+                 success: function (data) {
+                     if (data == "Fail") { alert("Download failed ..Please try again !! ") }
+                     else if (data == "No data available to download."){ alert(data) }
+                     else { alert("Please check the path: " + data) }
+                 }
+             })
+            }//end of if
+            else{alert(st)}//end of else 
+        });
+        
+
+        $("#btnsub").click(function () {
+           
+           
+                var stdt1 = $("#datetime1").val();
+                var endt1 = $("#datetime2").val();
+                var stdt = new Date(stdt1);
+                var endt = new Date(endt1);
+              
+                var rep = $rep;
+            
+                var st=valid(stdt1,endt1,rep);
+                if(st=="Success")
+                {
+                         var rootUrl = '@Url.Content("~")'
+                         var methcall = '';
+                         switch (rep) {
+                             
+                             case 'costrep': methcall = '/Freight2/Cost_rep/'; break;
+                             case 'detrep': methcall = '/Freight2/Det_rep/'; break;
+                             case 'transrep': methcall = '/Freight2/Trans_rep/'; break;
+                             case 'cusrep': methcall = '/Freight2/Cus_rep/'; break;
+                             case 'vutilrep': methcall = '/Freight2/Vutil_rep/';  break;
+                             case 'dierep': methcall = '/Freight2/Dieco_rep/'; break;
+                             case 'buacrep': methcall = '/Freight2/Bua_rep/'; break;                            
+                             case 'corerep': methcall = '/Freight2/Cosac_rep/'; break;
+                             case 'scrfrtrep': methcall = '/Freight2/Scfrt_rep/'; break;
+                             case 'dierepfrt': methcall = '/Freight2/DiecoFrt_rep/'; break;
+
+                             default: alert("Please select the report"); break;
+                         }
+                         if (methcall == "") { }
+                         else {
+                       
+                           $.get(rootUrl+ methcall, { stdt: stdt1, endt: endt1  }, function (data) {
+                                 $("#partial_cs").html(data)
+                                 
+                             }) //end of get 
+                         }//end of else  if (methcall == "")
+                     
+                }//end of if
+                else{
+                    alert(st)
+                }//end of else 
+        })//end of submit btn click 
+
+       
+
+
+
+
+    });
+
+</script>
+

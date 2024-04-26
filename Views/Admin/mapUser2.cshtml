@@ -1,0 +1,83 @@
+﻿@model IEnumerable<FreightApp.Models.APPMATRIX>
+
+@{
+    ViewBag.Title = "mapUser";
+}
+<h2>mappUser</h2>
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script> 
+<h2>mapUser</h2>
+@ViewBag.msg
+<input type="text" value="" name="hidnuser" hidden="hidden"/>
+ @using (Html.BeginForm("mapUser", "Admin", FormMethod.Post))
+{
+ 
+<input type="text" value="" name="regid" />
+<input type="submit" value="Select" class="btn btn-default" />
+<div id="add">+</div>
+     
+<table id ="tbl" class="table table-striped table-bordered table-hover">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.APPNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USERID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr> 
+        <td>
+            @Html.DisplayFor(modelItem => item.APPNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USERID)
+        </td>
+        <td class="delete">
+            x
+        </td>
+       
+    </tr>
+}
+
+</table>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        
+        $(".delete").click(function(){
+            var i = $(this).parents('tr').find('td:eq(0)').text().trim();
+            var j = $(this).parents('tr').find('td:eq(1)').text().trim();
+
+          var rootUrl = '@Url.Content("~")'
+          $.get(rootUrl+'/Admin/delAppUser/', { appname: i.trim(), username: j.trim() }, function (p) {
+                if(p=="Failed"){
+                    alert("Failed to Delete the record, please check with technical team!!")
+                }
+                else{
+                    
+                }
+                FreightApp.reload();
+            })
+        })
+
+        $("#add").click(function () {
+            var a = $("#tbl").find('tr td:eq(1)').text().trim();
+
+            var rootUrl = '@Url.Content("~")'
+          $.get(rootUrl+'/Admin/addAppUser/', { a: a.trim() }, function (p) {
+                if (p == "Failed") {
+                    alert("No record found!!")
+                }
+                else {
+                    alert(p);
+                }
+                FreightApp.reload();
+            })
+        })
+    });
+
+    </script>

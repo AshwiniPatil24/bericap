@@ -1,0 +1,79 @@
+﻿@model FreightApp.Models.DIESEL_M
+
+
+
+
+@using (Html.BeginForm("dsl_Create_save","Freight",FormMethod.Post)) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+<table class="table">
+    <tr>
+        <td>
+            Date:
+        </td>
+     <td>
+            @Html.TextBoxFor(model => model.MONTYRDD,new { @class="date-picker",id="mmmyy1",placeholder="dd/mm/yyyy", @required  = "required"})
+@*           <input class="date-picker",id="mmmyy",placeholder="dd/mm/yyyy" />*@
+            @Html.ValidationMessageFor(model => model.MONTYRDD)
+        </td>
+        </tr>
+    
+    <tr>
+     <td>
+           Price:
+        </td>
+     <td>
+            @Html.EditorFor(model => model.PRICE_D, new {@type = "number", @required  = "required"})
+            @Html.ValidationMessageFor(model => model.PRICE_D)
+        </td>
+</tr>   
+       <tr>
+           <td><button type="submit" value="Add" class="btn btn-primary ">Add</button></td> 
+        </tr>
+    </table>
+}
+
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+<script type="text/javascript">
+
+    
+    $(function () { 
+        $('.date-picker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'dd/mm/yy',
+            onChangeMonthYear: function (dateText, inst) {
+                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(year, month, 1));
+             }
+        });
+    });
+
+
+ 
+</script>
+<style>
+  .table {
+     background-color: #d7f1ee;
+}
+
+          input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+ 
+    </style>

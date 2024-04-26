@@ -1,0 +1,30 @@
+﻿@model FreightApp.Models.APPMATRIX
+
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>APPMATRIX</legend>
+
+       <td>
+            @Html.LabelFor(model => model.APPNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.APPNAME)
+            @Html.ValidationMessageFor(model => model.APPNAME)
+        </div>
+
+      
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

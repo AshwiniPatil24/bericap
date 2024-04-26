@@ -1,0 +1,64 @@
+﻿@model FreightApp.Models.LOGIN
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>LOGIN</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.USERID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.USERID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PASSWORD)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PASSWORD)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.REGID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.REGID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ACTIVESTATUS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ACTIVESTATUS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OLDPASS1)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OLDPASS1)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIRSTPASSWORD)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIRSTPASSWORD)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.APPLICATION)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.APPLICATION)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

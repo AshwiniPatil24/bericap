@@ -1,0 +1,357 @@
+﻿@model IEnumerable<FreightApp.Models.TRANSINVOICE>
+
+@{
+    ViewBag.Title = "TransView";
+}
+
+
+
+@using (Html.BeginForm("TransView", "Freight1"))
+{
+    <input type ="text" name ="trans" id="trans" placeholder="Enter Transporter code" value="@ViewBag.trans"/>
+    <input type="datetime" id="datetime1" name="stdt" class="date-picker dp" placeholder="Start Date" required="required"  value="@ViewBag.sdt"/>
+    <input type="datetime" id="datetime2" name="endt" class="date-picker dp" placeholder="End Date" required="required" value="@ViewBag.edt"/>
+    <button type="submit" id="sbmt" value="" class="glyphicon glyphicon-search btn btn-success" ></button>
+ 
+    <button type="button" value="" class="glyphicon glyphicon-download btn btn-warning"  id="tvdl"></button>
+     <input type ="text" name ="trans11" id="trans11"  value="@ViewBag.trans" hidden="hidden"/>
+    <input type="datetime" id="datetime11" name="stdt11"   value="@ViewBag.sdt" hidden="hidden"/>
+    <input type="datetime" id="datetime22" name="endt11"   value="@ViewBag.edt" hidden="hidden"/>   
+}
+<div  >
+    <table class="table table-bordered">
+   <tr  style="background-color:#07285b;color:white">
+        <th hidden="hidden">
+            @Html.DisplayNameFor(model => model.SALES_ID)
+        </th>
+         
+        <th>
+            Transporter Code
+        </th>
+         <th>
+            Name
+        </th>
+        <th>sa
+            Reporting Date & Time
+        </th>
+        <th>
+            Releasing date & time 
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Updated By 
+        </th>
+        <th>
+           Updated Date
+        </th>
+        <th>
+           Note
+        </th>
+     <th>
+         Lr No
+     </th>
+        <th>
+         Bill Date
+     </th>
+         <th hidden="hidden">
+         Lr No
+     </th>
+      
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr class="tr_clickable" id="first">
+        <td hidden="hidden" >
+            @Html.DisplayFor(modelItem => item.SALES_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VENDOR)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.TRANS_NAME)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.REP_DT, new { @id = "datetime1" })         
+        <td>
+            @Html.DisplayFor(modelItem => item.UNL_DT, new { @id = "datetime1" })
+        </td>
+        <td id="sts">
+            @Html.DisplayFor(modelItem => item.STATUS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UPDATED_BY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UPDATED_DT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOTE)
+        </td>
+        <td >@Html.DisplayFor(modelItem => item.LR_NO, new { @id = "lr" })</td>
+
+         <td>@Html.DisplayFor(modelItem => item.BILL_DT).ToString().Substring(0, 10)</td>
+         <td hidden="hidden" class="id">
+          @Html.DisplayFor(modelItem => item.ID)
+     </td>
+
+    </tr>
+}
+
+</table> 
+
+</div> 
+
+<div id="divpartialsales"></div>
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+       
+        <div class="modal-body">
+            <div>
+                <div>
+                   Reporting Date : <input type="date" id="dtrep" required="required"/>
+                   Time : <input type="time" id="tmerep" required="required"/>
+                </div>
+                <br />
+                 <div >
+                   Releasing Date :  <input type="date" id="dtrel" required="required"/>
+                   Time : <input type="time" id="tmerel"  required="required"/>
+                     </div>
+                <br />
+                    <div >
+                      Note  :  <input type="text" id="note"  required="required" maxlength="50"/>
+                 </div>
+             </div>
+         
+        </div>
+        <div class="modal-footer">
+             <button type="button" id="save" class="btn btn-success" data-dismiss="modal">Save</button>
+             <button type="button" class="btn btn-success close1" data-dismiss="modal" >Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+     <div class="modal fade" id="myModal1" role="dialog">
+     <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+       
+        <div class="modal-body">
+            <div>
+                 Are you sure you want to submt the values ? 
+             </div>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="yes" class="btn btn-success" data-dismiss="modal">Yes</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+ <script src="~/Scripts/moment.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $idd = "";
+        $yes = "";
+        $rep = "";
+        $rel = "";
+        $note = "";
+       
+
+        var rootUrl = '@Url.Content("~")'
+        
+        var sid1 = $("#first").find('td:first').text().trim();
+        partialdispsales(sid1)
+        $(".tr_clickable").click(function () {
+             
+            $idx = $(this).parent().index();
+            $(this).parent().children().removeClass("selected");
+            $(this).addClass("selected");
+        });
+
+        $(".tr_clickable").dblclick(function () {         
+            $idd = $(this).closest('tr').find(".id").text().trim();
+            var sts = $(this).closest('tr').find("#sts").text().trim();
+           
+            if (sts == "K")
+            { alert("Knocked off Invoices can not be changed.") }
+            else
+            {
+                $('#myModal').modal('toggle');
+            }
+        });
+
+        $('#yes').on('click', function () {
+           
+            var rootUrl = '@Url.Content("~")'
+             $.get(rootUrl+'/Freight1/updateDtInvoice/', { id: $idd, repdt: $rep, unldt: $rel, note: $note }, function ($rep) {
+
+                if ($rep == "Success") {
+                    location.reload();
+                }
+                        else { alert("Unable to save the record , please try again or check with system administrator."); }
+                    })
+
+                })
+        $('#save').on('click', function () {
+            var tmrp = $("#tmerep").val();
+            var tmrl = $("#tmerel").val();
+            var dtrp = $("#dtrep").val();
+            var dtrl = $("#dtrel").val();          
+            var dtrp1 = new Date(dtrp);
+            var dtrl1 = new Date(dtrl);
+            var flag = false;
+            var note = $("#note").val();           
+            if (dtrp == "" || dtrp == null) { alert("Please enter Reporting date!!"); }
+            else if (dtrl == "" || dtrl == null) { alert("Please Enter Unloading date and time!!"); }
+            else if (tmrp == "" || tmrp == null) { alert("Please enter Reporting time!!"); }
+            else if (tmrl == "" || tmrl == null) { alert("Please Enter Unloading date and time!!"); }
+            else if (note == "" || note == null) { alert("Please Enter Reason for changing date time.!!"); }
+            else if (dtrp > dtrl) { alert("Reporting date can not be greater than Unloading date and time!!" ); }
+            else if (dtrp == dtrl) {
+                 if (tmrp > tmrl) { alert("Reporting time can not be greater than Unloading time when unloaded vehicle on same day!!");}
+                 else {flag = true;}
+            }
+           
+            else {flag = true;}
+
+            if (flag == true)
+            {
+                $rep = $("#dtrep").val() + "T" + $("#tmerep").val();
+                $rel = $("#dtrel").val() + "T" + $("#tmerel").val();
+                $note = note;
+                $('#myModal1').modal('toggle');
+            }
+        });
+
+    
+        
+        $(".tr_clickable").click(function () {
+            var sid = $(this).find('td:first').text().trim();
+           
+            partialdispsales(sid)
+        })
+        
+        $("#tvdl").click(function () {
+            
+            var endt1 = $("#datetime22").val();
+            var stdt1 = $("#datetime11").val();
+             
+            var trans = $("#trans11").val();
+            var rep = "transviewrep";
+            
+                var st = validdt(stdt1, endt1);
+                if (st == "Success") {
+                    var rootUrl = '@Url.Content("~")';
+                    
+
+                    //alert(stdt1);
+                    //alert(endt1);
+                    $.ajax({
+                        url: '@Url.Action("dwnrep1")',
+                        data: { stdt: stdt1, endt: endt1, rep: rep,trans: trans },
+                        type: 'POST',
+                        success: function (data) {
+                            if (data == "Fail") { alert("Download failed ..Please try again !! ") }
+                            else if (data == "No data available to download.") { alert(data) }
+                            else { alert("Downloaded Data can be found at path : " + data) }
+                        }
+                    })
+                   
+                }//end of if
+
+                else { alert(st) }//end of else 
+           
+        });
+
+        function validdt(stdt1, endt1) {
+            var st = "Success";
+            var stdt = new Date(stdt1);
+            var endt = new Date(endt1);
+             
+           
+            if (stdt1 != "") {
+                
+                if (endt1 == "" ) { st = "Please select end date...!"; }
+            }
+            
+             else if (endt1 != "" ) {
+                 
+                 if (stdt1 == ""  ) { st = "Please select start date...!"; }
+             }
+             else if ( endt1 != ""   && stdt1 != ""  ) 
+             {
+                 
+               var i = endt - stdt;
+               if (i < 0) { st = "Startdate can not be greater than EndDate!"; }
+             }
+             else if (endt1 == "" && stdt1 == "") { st = "Please select Start date & End date to download the report ..!"; }
+             else { }
+            return st;
+
+        }
+
+        function partialdispsales(sid) {
+            
+            var rootUrl = '@Url.Content("~")'
+          $.get(rootUrl+'/Freight1/SalesView/', { sid: sid }, function (data) {
+                $("#divpartialsales").html(data)
+            })
+        }
+    });
+
+    $(function () {
+        $('.date-picker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'd-M-yy',
+            onChangeMonthYear: function (dateText, inst) {
+                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(year, month, 1));
+
+            }
+        });
+
+    
+    });
+    </script>
+
+
+
+
+<style>
+    .selected {
+    background-color:#2f8fe1;
+    }
+    
+    .unselect {
+    background-color:white;
+    }
+</style>

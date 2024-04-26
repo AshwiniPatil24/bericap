@@ -1,0 +1,145 @@
+﻿@model FreightApp.Models.ZONE_M
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-dialog.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-dialog.css" rel="stylesheet" />
+
+@using (Html.BeginForm("zone_Edit_save", "Freight"))
+{
+
+    <div id="edit5">
+  
+        <table class="table table-bordered table-hover" >
+            <tr hidden="hidden">
+                <td >ID
+                </td>
+                <td  >
+                   @Html.TextBoxFor(model => model.ID,new{@readonly="readonly"})
+                </td>
+            </tr>
+
+            <tr>
+                <td>State:
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.STATE,new{@readonly="readonly"})
+                    @Html.ValidationMessageFor(model => model.STATE)
+                </td>
+                 </tr>
+
+            <tr>
+                <td>Zone:
+                </td>
+
+            
+           @{
+   var listItems = new List<SelectListItem>();
+   listItems.Add(new SelectListItem { Text = "East", Value = "East" });
+   listItems.Add(new SelectListItem { Text = "West", Value = "West" });
+   listItems.Add(new SelectListItem { Text = "South", Value = "South" });
+   listItems.Add(new SelectListItem { Text = "North", Value = "North" });
+ 
+}       
+                    
+         <td>
+             @Html.DropDownListFor(model => model.ZONE, listItems)
+                                     
+        </td>
+
+</tr>
+
+
+                
+              
+            <tr>
+                <td colspan="2"> <input type="submit" value="Save" class="btn-success"  /></td>
+           </tr>
+        </table>
+    </div> 
+
+    
+    <div id="details5">
+
+      <table class="table table-bordered table-hover" >
+                <tr hidden="hidden">
+                <td >ID
+                </td>
+                <td id="idzone" >
+                    @Html.DisplayFor(model => model.ID)
+                </td>
+            </tr>
+
+            <tr>
+            <td>State:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.STATE)
+                @Html.ValidationMessageFor(model => model.STATE)
+            </td>
+</tr>
+          <tr>
+            <td>Zone:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ZONE)
+                @Html.ValidationMessageFor(model => model.ZONE)
+            </td>
+</tr>
+
+         
+              <tr>
+        <td colspan="2">
+             <input type="button" class="btn-primary" value="Edit" id="editbtn5" />
+        </td>
+            
+    </tr>
+
+        </table>
+
+    </div>  
+    
+    
+    
+}
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+       
+        $("#details5").show();
+        $("#edit5").hide();
+
+        $("#editbtn5").click(function(){
+            //alert("btn clicked")
+            $("#details5").hide();
+            $("#edit5").show();
+
+        });
+
+
+        $("#sv").click(function () {
+
+
+        })
+
+  
+
+    });
+
+
+
+</script>
+<style>
+  .table {
+     background-color: #d7f1ee;
+}
+    </style>

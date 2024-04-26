@@ -1,0 +1,252 @@
+﻿@model IEnumerable<FreightApp.Models.SALES>
+
+ 
+ <table class="table table-bordered table-hover table-striped" id="header-fixed">
+    <tr style="background-color:#abc6c6">
+        <th>
+            Billing Doc 
+        </th>
+        <th>
+            Bill-Date
+        </th>
+        <th>
+            Ref No
+        </th>
+      
+        <th>
+            STP
+        </th>
+        <th>
+            STP NAME
+        </th>
+        <th>
+            SOP
+        </th>
+        <th>
+            SOP NAME
+        </th>
+        <th>
+            SOP LOCATION
+        </th>
+        <th>
+             MAT NO 
+        </th>
+        <th>
+            MAT DESC 
+        </th>
+        <th>
+             HIE NO 
+        </th>
+        <th>
+             HIE DESC 
+        </th>
+        <th>
+            BILL QTY 
+        </th>
+        <th>
+            BOX QTY 
+        </th>
+        
+        <th>
+           SALES DOC
+        </th>
+        <th>
+            ASS.VALUE
+        </th>
+        <th>
+            FR AF
+        </th>
+        <th>
+            GROSS
+        </th>
+        <th>
+            CITY
+        </th>
+        <th>
+            KEY 
+        </th>
+        <th>
+            COUNTRY 
+        </th>
+        <th>
+            REGION 
+        </th>
+        <th>
+            UNIT PRICE 
+        </th>
+        <th>
+            FOB 
+        </th>
+        <th>
+            INCOTERMS 
+        </th>
+        <th>
+            VENDORID
+        </th>
+        <th>
+           VENDOR NAME
+        </th>
+        <th>
+            LR_NO
+        </th>
+        <th>
+            MNS_TRANSTY 
+        </th>
+        <th>
+            PRICING_UNIT 
+        </th>
+        <th>
+            STATE CODE STP
+        </th>
+        <th>
+            STATE NAME SHIP 
+        </th>
+         <th>
+            STATE CODE SOP
+        </th>
+        <th>
+            STATE NAME SOP 
+        </th>
+        <th>
+            PORT 
+        </th>
+        <th>
+            IGST 
+        </th>
+        <th>
+            IGST_RATE 
+        </th>
+        <th>
+            CGST 
+        </th>
+        <th>
+            CGST_RATE 
+        </th>
+        <th>
+            SGST 
+        </th>
+        <th>
+            SGST_RATE 
+        </th>
+        <th>
+            GST_NO_SOLD 
+        </th>
+        <th>
+            GST_NO_SHIP 
+        </th>
+     
+        <th>
+            Vehicle no. 
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILLING_DOC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_DT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REF_NO)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.SHIP_TO_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME_SHIP_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SOLD_TO_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME_SOLD_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LCN_SOLD_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAT_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAT_DESC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HIE_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HIE_DESC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_QTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BOX_QTY)
+        </td>
+ 
+        <td>
+            @Html.DisplayFor(modelItem => item.FRT_AFT_ST)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.CITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COUNTRY_KEY)
+        </td>
+       
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.INCOTERMS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VENDOR)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.LR_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MNS_TRANSTY)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.STATE_NM_SHIP)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.STATE_NM_SOLD)
+        </td>
+        
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.GST_NO_SOLD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GST_NO_SHIP)
+        </td>
+   
+        <td>
+             @Html.DisplayFor(modelItem => item.VEH_NO)
+        </td>
+        <td>            
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<style>
+    .table-striped {
+  background-color: #d7f1ee;
+
+    }
+     .hd {
+         background-color: #abc6c6;
+    }
+</style>

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<FreightApp.Models.SALES>
+
+ 
+<table class="table table-bordered" style="background-color:lightblue">
+    <tr>
+        <th>
+           Billing Doc
+        </th>
+        <th>
+             Date 
+        </th>
+        <th>
+           RefNo.
+        </th>             
+        <th>
+            ShipToParty Name
+        </th>
+        <th>
+           ShipToParty Location
+        </th>       
+        <th>
+            Quantity
+        </th>
+        <th>
+            Boxes
+        </th>  
+        <th>
+            Incoterms
+        </th>
+        <th>
+            VendorId
+        </th>
+        <th>
+            Vendor Name
+        </th>
+        <th>
+            Lr.No.
+        </th>
+        <th>
+            Type of Vehicle
+        </th>
+ 
+        <th>
+            GST_SOLD
+        </th>
+        <th>
+            GST_SHIP
+        </th>
+       
+     
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILLING_DOC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_DT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REF_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME_SHIP_PARTY)
+        </td>       
+        <td>
+            @Html.DisplayFor(modelItem => item.LCN_SHIP_PARTY)
+        </td>
+      <td>
+            @Html.DisplayFor(modelItem => item.BILL_QTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BOX_QTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INCOTERMS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VENDOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VEN_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LR_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MNS_TRANSTY)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.GST_NO_SOLD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GST_NO_SHIP)
+        </td>
+       
+       
+    </tr>
+}
+
+</table>

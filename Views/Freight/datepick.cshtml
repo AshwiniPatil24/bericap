@@ -1,0 +1,49 @@
+﻿@model FreightApp.Models.DIESEL_M
+
+@{
+    ViewBag.Title = "datepick";
+}
+
+<h2>datepick</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>DIESEL_M</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MONTYRDD)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MONTYRDD)
+            @Html.ValidationMessageFor(model => model.MONTYRDD)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PRICE_D)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PRICE_D)
+            @Html.ValidationMessageFor(model => model.PRICE_D)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DT)
+            @Html.ValidationMessageFor(model => model.DT)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+
+

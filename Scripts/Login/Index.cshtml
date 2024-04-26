@@ -1,0 +1,26 @@
+﻿@model FreightApp.Models.LOGIN
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Login", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+
+    
+    
+     <fieldset>
+        <legend>Application Catalog</legend>
+    
+   @foreach(var val in @ViewBag.applist)
+   {
+       
+     <input type="submit" name="app" style="width:200px" value=@val />
+   }
+        </fieldset>
+}

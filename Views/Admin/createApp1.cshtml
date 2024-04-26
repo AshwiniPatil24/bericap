@@ -1,0 +1,29 @@
+﻿@model IEnumerable<FreightApp.Models.APPLICATION>
+
+@using (Html.BeginForm("createApp","Admin")) {
+
+<table>
+    <tr>
+        <th>
+           Application
+        </th>
+        <th>
+           Application View
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.APP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APP_VIEW)
+        </td>
+       
+    </tr>
+}
+   <button type="submit"class="btn btn-primary " id="btn_add">Add</button> 
+</table>
+}

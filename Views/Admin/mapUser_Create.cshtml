@@ -1,0 +1,42 @@
+﻿@model FreightApp.Models.APPMATRIX
+
+@{
+    ViewBag.Title = "mapUser_Create";
+}
+
+<h2>mapUser_Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>APPMATRIX</legend>
+
+       <td>
+            @Html.LabelFor(model => model.APPNAME)
+        </div>
+        <div class="editor-field">
+             @Html.DropDownList("Applist",Model.APPNAME)
+            
+        </div>
+
+       <td>
+            @Html.LabelFor(model => model.USERID)
+        </div>
+        <div class="editor-field">
+         
+             
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "mapUser")
+</div>
+
+

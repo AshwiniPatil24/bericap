@@ -1,0 +1,163 @@
+﻿@model IEnumerable<FreightApp.Models.CUSTOMER_M>
+
+
+
+<div>
+    @Ajax.ActionLink("Add new Customer", "cust_Create",
+        new AjaxOptions
+        {
+            HttpMethod = "GET",
+            UpdateTargetId = "divpartialcust",
+            InsertionMode = InsertionMode.Replace
+
+        })
+</div>
+
+
+<div class="panel panel-default" style="margin-left:0px">
+    <div class="col">
+        <div class="col-md-8  well partl" style="overflow-y: scroll; display: block; ">
+           
+    <table class="table-bordered table-striped  " id="header-fixed">
+
+                <thead>
+                    <tr class="hd" >
+                        <th hidden="hidden">ID</th>
+                        <th>Code
+                        </th>
+                        <th>Name
+                        </th>
+                        <th>Address
+                        </th>                        
+                        <th>Street</th>
+                        <th>City    </th>
+                        <th>Destination
+                        </th>
+                        <th>State    </th>
+                        <th>District      </th>
+                        <th>Country Code</th>
+                        <th>Country name</th>
+                        <th>Post Code </th>
+                        <th>Tele. Phone</th>
+                        <th>Fax  </th>
+                        <th>Indus.  </th>
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="trindex">
+                            <td hidden="hidden">
+                                @Html.DisplayFor(modelItem => item.ID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CUST_CODE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CUST_NAME)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CUST_ADDR)
+                            </td>
+                           
+                            <td>
+                                @Html.DisplayFor(modelItem => item.STREET)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CITY)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DESTINATION)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.STATE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DIST)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CNTRY_CODE)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CNTRY_NAME)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.POST_CODE)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TELEPH)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FAX)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.INDUS)
+                            </td>
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    @* ------------------------------------------------------------------------------------ *@
+    <div class="col" >
+        <div class="col-md-4" >
+            <div class="panel-heading">
+                Details
+            </div>
+            <div id="divpartialcust"></div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('.trindex').click(function () {
+
+            //  $(this).css("background-color", "blue");
+            var trid = $(this).find('td:first').text().trim();//trying to alert id of the clicked row
+            ////alert(trid)
+            if (trid == "" || trid == null) { }
+            else {
+                var rootUrl = '@Url.Content("~")'
+             $.get(rootUrl+'/Freight/cust_Edit/', { idd: trid }, function (data) {
+                  // //alert(data)
+                   $("#divpartialcust").html(data)
+
+               })
+           }
+        });
+
+
+
+
+    });
+</script>
+
+
+<style>
+
+    .table-striped {
+        background-color: #c8e6f7;
+    }
+
+    .hd {
+         background-color: #abc6c6;
+    }
+
+     .partl {
+    height:550px;
+    }
+
+    </style>

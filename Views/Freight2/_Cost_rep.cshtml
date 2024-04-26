@@ -1,0 +1,209 @@
+﻿@model IEnumerable<FreightApp.Models.COSTSTATEREP>
+
+<div><table   style="width:20%;color:#1977eb ;text-align:right" class="table " >
+     <tr >
+    <th>  Freight  Amount  </th>         <td class="p_1000"> <b>@ViewBag.frt</b>   </td>  </tr>
+    <tr>  <th>  Total Freight Amount  </th>         <td class="p_1000"><b> @ViewBag.frt_t </b> </td> </tr>
+    <tr>  <th>  Total Othercharges Amount  </th>         <td class="p_1000"><b> @ViewBag.other </b>  </td></tr>
+    <tr>  <th>  Total detention Amount  </th>         <td class="p_1000"><b> @ViewBag.det </b>  </td></tr>
+   
+         </table>
+
+</div>
+@*<table  style="width:60%;font-size:small" class="table table-hover table-striped table-scroll">*@
+<div id="table-container" >
+<table id="maintable" class="table table-hover table-striped table-scroll"  style="width:50%;font-size:smaller">
+    <thead>
+    <tr style="background-color:deepskyblue">
+        <th>
+            Trans porter
+        </th>
+        <th>
+           Ship-to party
+
+        </th>
+        <th>
+       Name 
+        </th> 
+        <th>Location</th>
+        <th>
+            Billing Doc
+        </th>
+        <th>
+            Billing Date
+        </th>
+        <th >
+            Reference
+        </th>
+         <th>
+            Lr.No.
+        </th>
+   
+         <th >  VehicleNo.  </th>
+         <th>Type</th>
+         <th>Box Qty</th>
+        <th>Delay</th>
+         <th>Penalty</th>
+        <th>
+            Freight
+        </th>
+        <th>
+            Deten tion
+        </th>
+        
+        <th>
+           Other cost
+        </th>
+      
+        <th>
+            Total Freight
+        </th>
+        <th>
+            Un billed
+        </th>
+       <th>
+            ReasonFor Detention
+
+        </th>
+
+    </tr>
+        </thead>
+<tbody >
+@foreach (var item in Model)
+{
+ 
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.VENDOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STP_CODE)
+        </td>
+        <td style="font-size:smaller">
+            @Html.DisplayFor(modelItem => item.STP_NAME)</td>
+            <td>@Html.DisplayFor(modelItem => item.STP_LCN)</td>
+       
+        <td>
+          @Html.Raw(item.BILL_DOC.Replace(",", "<br>"))
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_DT)
+        </td>
+        <td>
+            @Html.Raw(item.REFERENCE.Replace(",", "<br>"))
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LR_NO)
+        </td>
+       @*  <td>
+                @Html.DisplayFor(modelItem => item.BILL_NO)
+            </td>*@
+            <td style="font-size:smaller"> @Html.DisplayFor(modelItem => item.VEH_NO)</td>
+             <td style="font-size:smaller"> @Html.DisplayFor(modelItem => item.VEH_TYPE)</td>
+         <td> @Html.DisplayFor(modelItem => item.BOX_QTY)</td>
+        <td  class="p_1000"> @Html.DisplayFor(modelItem => item.PEN_DAYS)</td>
+         <td class="p_1000"> @Html.DisplayFor(modelItem => item.PENALTY)</td>
+           <td class="p_1000">
+           @Html.DisplayFor(modelItem => item.FREIGHT)
+        </td>
+            <td class="p_1000">
+              @Html.DisplayFor(modelItem => item.DETENTION)
+        </td>
+         <td class="p_1000">
+            @Html.DisplayFor(modelItem => item.OTHERCOSTS)
+        </td> 
+
+        
+           <td class="p_1000">
+            @Html.DisplayFor(modelItem => item.FREIGHT_T)
+        </td>
+        <td class="p_1000">
+            @Html.DisplayFor(modelItem => item.UNBILLED)
+        </td>
+        <td style="font-size:smaller">
+            @Html.DisplayFor(modelItem => item.DNOTE)
+        </td>
+        
+    </tr>
+}
+</tbody>
+</table>
+
+<div id="bottom_anchor"></div>
+</div>
+
+
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+ 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('tr').find(".p_1000").each(function () {
+            var x = $(this).text();
+
+            var y = numberWithCommas(x)
+            $(this).text(y);
+            $(this).css('text-align', 'right')
+
+        })//end of function.
+        //gives values with commas to rows which having class-p_1000.
+
+        function numberWithCommas(x) {
+            
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }//end of function.
+        //gives values with commas.
+
+
+        function moveScroll() {
+            var scroll = $(window).scrollTop();
+            var anchor_top = $("#maintable").offset().top;
+            var anchor_bottom = $("#bottom_anchor").offset().top;
+            if (scroll > anchor_top && scroll < anchor_bottom) {
+                clone_table = $("#clone");
+                if (clone_table.length == 0) {
+                    clone_table = $("#maintable").clone();
+                    clone_table.attr('id', 'clone');
+                    clone_table.css({
+                        position: 'fixed',
+                        'pointer-events': 'none',
+                        top: 0
+                    });
+                    clone_table.width($("#maintable").width());
+                    $("#table-container").append(clone_table);
+                    $("#clone").css({ visibility: 'hidden' });
+                    $("#clone thead").css({ visibility: 'visible', 'pointer-events': 'auto' });
+                }
+            } else {
+                $("#clone").remove();
+            }
+        }
+        $(window).scroll(moveScroll);
+
+    })
+    </script>
+
+
+
+<style>    
+body { height: 1000px; }
+thead{
+    background-color:white;
+}
+
+</style>
+
+ 

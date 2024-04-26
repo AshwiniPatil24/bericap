@@ -1,0 +1,79 @@
+﻿@model IEnumerable<FreightApp.Models.APPLICATION>
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-dialog.js"></script>
+
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+@ViewBag.appname
+ <input type="text" name="txt" id="appn"  value="@ViewBag.appname" hidden="hidden"/>
+<table>
+    <tr>
+        <th hidden="hidden"></th>
+        <th>
+            Views
+        </th>
+    </tr>
+   
+@foreach (var item in Model)
+{
+    <tr class="trindex">
+         <td hidden="hidden">
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.APP_VIEW)
+        </td>
+
+    </tr>
+} 
+</table>
+<div>
+    <input type="button" value="Add New" id="ad" />
+</div>
+    
+<div id="newad">
+     <input type="text" name="txt" id="newtxt" />   <input type="submit" value="Add" id="add" /> @*<button type="submit"class="btn btn-primary " id="sav">Add</button> *@
+</div>
+
+
+<script type="text/javascript">
+   
+    $(document).ready(function () {
+        $("#newad").hide();
+        $('#ad').click(function () {
+            $("#newad").show(); 
+            $('#ad').hide();
+        });
+
+        
+        $('#add').click(function () {
+            $("#newad").hide();
+            $('#ad').show();
+            var vw=$("#newtxt").val();
+            var app=$("#appn").val();
+
+          
+                    var rootUrl = '@Url.Content("~")'
+                 $.get(rootUrl+'/Admin/createAppV_save/', { app_n: app, app_v:vw }, function (p) {
+                     $stat = p;
+                       
+                     FreightApp.reload();
+
+                 })
+        });
+        //$('#sav').click(function () {
+        //    alert($("#newtxt").val())
+        //})
+     
+    });
+    </script>

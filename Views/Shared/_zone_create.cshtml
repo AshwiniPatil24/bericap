@@ -1,0 +1,58 @@
+﻿@model FreightApp.Models.ZONE_M
+
+<script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm("zone_Create_save","Freight",FormMethod.Post)) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+<table class="table">
+    <tr>
+       <td>
+           State:
+       </td>
+        <td>
+            @Html.EditorFor(model => model.STATE)
+            @Html.ValidationMessageFor(model => model.STATE)
+       </td>
+</tr>
+
+
+          
+                <td>Zone: </td>
+            
+           @{
+   var listItems = new List<SelectListItem>();
+   listItems.Add(new SelectListItem { Text = "East", Value = "East" });
+   listItems.Add(new SelectListItem { Text = "West", Value = "West" });
+   listItems.Add(new SelectListItem { Text = "South", Value = "South" });
+   listItems.Add(new SelectListItem { Text = "North", Value = "North" });
+ 
+}       
+                    
+         <td>
+             @Html.DropDownListFor(model => model.ZONE, listItems)
+                                     
+       </td>
+
+
+
+
+
+      
+
+   <tr>
+        <td><button type="submit" value="Add" class="btn btn-primary ">Add</button></td>    
+        </tr>
+   
+
+  </table>
+}
+
+
+<style>
+  .table {
+     background-color: #d7f1ee;
+}
+    </style>

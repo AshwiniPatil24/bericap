@@ -1,0 +1,202 @@
+﻿@model FreightApp.Models.CONTRACT_M
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-dialog.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-dialog.css" rel="stylesheet" />
+
+@using (Html.BeginForm("contr_Edit_save", "Freight"))
+{
+
+    <div id="edit4">
+   
+
+        <table class="table table-bordered table-hover">
+            <tr>
+                <td hidden="hidden">ID</td>
+                <td  hidden="hidden">
+                    @Html.TextBoxFor(model => model.ID, new { @readonly = "readonly" })
+                </td>
+            </tr>
+
+            <tr>
+             <td>
+            @Html.LabelFor(model => model.VEH_NAME)
+        </td>
+
+
+      <td>
+            @Html.TextBoxFor(model => model.VEH_NAME, new { @readonly = "readonly" })
+       
+        </td>
+               
+
+            </tr>
+
+            <tr>
+            <td>
+               Month year:
+            </td>
+            <td>
+                @Html.EditorFor(model => model.MONTYR,new{@class="date-picker"})
+                @Html.ValidationMessageFor(model => model.MONTYR)
+            </td>
+</tr>
+            <tr>
+            <td>
+                Amount:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.AMOUNT, new {@type="number" })
+                @Html.ValidationMessageFor(model => model.AMOUNT)
+            </td>
+                </tr>
+
+            <tr>
+           
+              
+            <td>
+                Destination:
+            </td>
+           <td>
+          @Html.DropDownList("destn",null, String.Empty, new {id="destn" })
+            @Html.ValidationMessageFor(model => model.DESTINATION)
+       </td>
+                </tr>
+
+            <tr>
+           
+              
+            <td>
+                Date created:
+            </td>
+           <td>
+            @Html.TextBoxFor(model => model.DTUPDATED, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.DTUPDATED)
+       </td>
+                </tr>
+
+               <tr  hidden="hidden"><td><input type="text" name="veh" id="dest" /></td></tr>
+
+
+           
+            <tr>
+                <td><input type="submit" value="Save" class="btn-success" /></td>
+            </tr>
+        </table>
+    </div>
+           
+            
+    <div id="details4">
+
+        <table class="table table-bordered table-hover">
+          
+                <tr>
+                <td  hidden="hidden">ID </td>
+                <td id="idcontr"  hidden="hidden">
+                    @Html.DisplayFor(model => model.ID)
+                </td>
+            </tr>
+
+            
+              <tr>
+                <td>
+                   Vehicle Name:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VEH_NAME)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Month Year:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.MONTYR)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Amount:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.AMOUNT)
+                </td>
+            </tr>
+
+     
+            <tr>
+                <td>
+                    Destination:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.DESTINATION)
+                </td>
+            </tr>
+
+            
+
+
+            <tr>
+                <td>
+                    <input type="button" class="btn-primary" value="Edit" id="edt4" />
+                </td>
+             
+            </tr>
+
+        </table>
+
+    </div>
+
+
+
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+       
+        $("#details4").show();
+        $("#edit4").hide();
+        $("#edt4").click(function(){
+        
+        
+            $("#edit4").show();
+            $("#details4").hide();
+        });
+       
+        $("#destn").change(function () {
+            var selectedValue = $(this).val();
+
+            $("#destn").val(selectedValue);
+
+        });
+
+
+
+    });
+
+
+
+</script>
+
+<style>
+  .table {
+     background-color: #d7f1ee;
+}
+
+            input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+    </style>

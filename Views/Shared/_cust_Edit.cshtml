@@ -1,0 +1,365 @@
+﻿@model FreightApp.Models.CUSTOMER_M
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-dialog.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-dialog.css" rel="stylesheet" />
+
+@using (Html.BeginForm("cust_Edit_save", "Freight"))
+{
+
+    
+    <div id="edit">
+  
+        <table class="table table-bordered table-hover" >
+            <tr>
+                <td hidden="hidden">ID
+                </td>
+                <td hidden="hidden" >
+                   @Html.TextBoxFor(model => model.ID,new{@readonly="readonly"})
+                </td>
+            </tr>
+
+              <tr >
+                <td>Customer Code:
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.CUST_CODE ,new{@readonly="readonly"})
+                    @Html.ValidationMessageFor(model => model.CUST_CODE)
+                </td>
+                 </tr>
+
+            <tr>
+                <td>Customer Name:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CUST_NAME)
+                    @Html.ValidationMessageFor(model => model.CUST_NAME)
+                </td>
+           </tr>
+
+            <tr>
+                <td>Customer Address:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CUST_ADDR)
+                    @Html.ValidationMessageFor(model => model.CUST_ADDR)
+                </td>
+            </tr>
+
+           
+
+
+
+            <tr>
+                <td>Destination:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.DESTINATION)
+                    @Html.ValidationMessageFor(model => model.DESTINATION)
+                </td>
+            </tr>
+
+            <tr>
+                <td>State:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.STATE)
+                    @Html.ValidationMessageFor(model => model.STATE)
+                </td>
+            </tr>
+            
+            <tr>
+                <td>Country Code:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CNTRY_CODE)
+                    @Html.ValidationMessageFor(model => model.CNTRY_CODE)
+                </td>
+            </tr>
+
+            
+                        <tr>
+                <td>Country Name:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CNTRY_NAME)
+                    @Html.ValidationMessageFor(model => model.CNTRY_NAME)
+                </td>
+            </tr>
+
+                 <tr>
+                <td>City:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CITY)
+                    @Html.ValidationMessageFor(model => model.CITY)
+                </td>
+            </tr>
+
+
+              <tr>
+                <td>Post Code:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.POST_CODE)
+                    @Html.ValidationMessageFor(model => model.POST_CODE)
+                </td>
+            </tr>
+
+              <tr>
+                <td>Street:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.STREET)
+                    @Html.ValidationMessageFor(model => model.STREET)
+                </td>
+            </tr>
+
+               <tr>
+                <td> Tele Phone.:
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.TELEPH, new {  @type = "number"})
+                    @Html.ValidationMessageFor(model => model.TELEPH)
+                </td>
+            </tr>
+
+                <tr>
+                <td> Fax.:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.FAX)
+                    @Html.ValidationMessageFor(model => model.FAX)
+                </td>
+            </tr>
+
+
+               <tr>
+                <td>Indus.:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.INDUS)
+                    @Html.ValidationMessageFor(model => model.INDUS)
+                </td>
+            </tr>
+        
+                   <tr>
+                <td>District.:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.DIST)
+                    @Html.ValidationMessageFor(model => model.DIST)
+                </td>
+            </tr>
+          
+              
+            <tr>
+               <td> <input type="submit" value="Save" class="btn-success"  /></td>
+           </tr>
+        </table>
+    </div> //------------------------------------End Of Edit Mode----------------------------------------
+           
+    <div id="details">
+
+      <table class="table table-bordered table-hover" >
+                <tr hidden="hidden">
+                <td  >ID
+                </td>
+                <td id="idcus" >
+                    @Html.DisplayFor(model => model.ID)
+                </td>
+            </tr>
+
+            <tr hidden="hidden">
+            <td>Customer Code
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CUST_CODE)
+                @Html.ValidationMessageFor(model => model.CUST_CODE)
+            </td>
+
+            <td>Customer Name:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CUST_NAME)
+                @Html.ValidationMessageFor(model => model.CUST_NAME)
+            </td>
+</tr>
+
+            <tr>
+            <td>Customer Address:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CUST_ADDR)
+                @Html.ValidationMessageFor(model => model.CUST_ADDR)
+            </td>
+</tr>
+         
+
+
+            <tr>
+            <td>Destination:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.DESTINATION)
+                @Html.ValidationMessageFor(model => model.DESTINATION)
+            </td>
+</tr>
+            <tr>
+            <td>State:
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.STATE)
+                @Html.ValidationMessageFor(model => model.STATE)
+            </td>
+</tr>
+
+          <tr>
+                <td>Country Code:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.CNTRY_CODE)
+                    @Html.ValidationMessageFor(model => model.CNTRY_CODE)
+                </td>
+            </tr>
+
+            
+                        <tr>
+                <td>Country Name:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.CNTRY_NAME)
+                    @Html.ValidationMessageFor(model => model.CNTRY_NAME)
+                </td>
+            </tr>
+
+                 <tr>
+                <td>City:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.CITY)
+                    @Html.ValidationMessageFor(model => model.CITY)
+                </td>
+            </tr>
+
+
+              <tr>
+                <td>Post Code:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.POST_CODE)
+                    @Html.ValidationMessageFor(model => model.POST_CODE)
+                </td>
+            </tr>
+
+              <tr>
+                <td>Street:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.STREET)
+                    @Html.ValidationMessageFor(model => model.STREET)
+                </td>
+            </tr>
+
+               <tr>
+                <td> Tele Phone.:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.TELEPH)
+                    @Html.ValidationMessageFor(model => model.TELEPH)
+                </td>
+            </tr>
+
+                <tr>
+                <td> Fax.:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.FAX)
+                    @Html.ValidationMessageFor(model => model.FAX)
+                </td>
+            </tr>
+
+
+               <tr>
+                <td>Indus.:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.INDUS)
+                    @Html.ValidationMessageFor(model => model.INDUS)
+                </td>
+            </tr>
+        
+                   <tr>
+                <td>District.:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.DIST)
+                    @Html.ValidationMessageFor(model => model.DIST)
+                </td>
+            </tr>   
+
+              <tr>
+        <td>
+             <input type="button" class="btn-primary" value="Edit" id="editbtn" />
+        </td>
+            
+    </tr>
+
+        </table>
+
+    </div>                                                    
+                                                    
+}
+
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+       
+    $("#details").show();
+        $("#edit").hide();
+
+        $("#editbtn").click(function(){
+            //alert("btn clicked")
+            $("#details").hide();
+            $("#edit").show();
+
+        });
+
+
+        $("#sv").click(function () {
+
+
+        })
+
+      
+
+    });
+</script>
+
+<style>
+  .table {
+     background-color: #d7f1ee;
+}
+
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    margin: 0; 
+}
+
+
+    </style>

@@ -1,0 +1,412 @@
+Vehicle Name,Rate,Destination,UpdatedDate
+PICK UP,6500,Mumbai,15/04/2022
+PICK UP,5600,Kalamboli,15/04/2022
+PICK UP,8000,wada,15/04/2022
+PICK UP,5800,Navi Mumbai,15/04/2022
+PICK UP,3300,Pune,15/04/2022
+PICK UP,6900,Kurakumbh,15/04/2022
+PICK UP,6900,Ahmednagar,15/04/2022
+PICK UP,6300,Patalganga,15/04/2022
+PICK UP,5400,Sahajpur,15/04/2022
+PICK UP,17400,Nagpur,15/04/2022
+PICK UP,4600,Pirangut,15/04/2022
+PICK UP,18200,Akola,15/04/2022
+PICK UP,8100,Nasik,15/04/2022
+PICK UP,4600,Khopoli,15/04/2022
+PICK UP,6800,Ambernath,15/04/2022
+PICK UP,6800,Roha,15/04/2022
+PICK UP,4900,Wai,15/04/2022
+PICK UP,7500,BARAMATI,15/04/2022
+PICK UP,3600,Dhayari (Pune),15/04/2022
+PICK UP,4900,Khalapur,15/04/2022
+PICK UP,4100,Manchar,15/04/2022
+PICK UP,2700,Bhosari/pimpri,15/04/2022
+Tempo-407,8000,Mumbai,15/04/2022
+Tempo-407,6700,Kalamboli,15/04/2022
+Tempo-407,9700,Valsad,15/04/2022
+Tempo-407,6500,Navi Mumbai,15/04/2022
+Tempo-407,8000,Silvasa,15/04/2022
+Tempo-407,8000,Vapi,15/04/2022
+Tempo-407,7900,Kurakumbh,15/04/2022
+Tempo-407,8000,Daman,15/04/2022
+Tempo-407,7600,Ahmednagar,15/04/2022
+Tempo-407,7000,Patalganga,15/04/2022
+Tempo-407,6700,Sahajpur,15/04/2022
+Tempo-407,5900,Pirangut,15/04/2022
+Tempo-407,8500,Nasik,15/04/2022
+Tempo-407,5400,Khopoli,15/04/2022
+Tempo-407,7400,Ambernath,15/04/2022
+Tempo-407,7500,Roha,15/04/2022
+Tempo-407,8500,"Silvasa, Castrol",15/04/2022
+Tempo-407,5700,Khalapur,15/04/2022
+Tempo-407,7400,Manchar,15/04/2022
+LCV-709,9900,Mumbai,15/04/2022
+LCV-709,7200,Kalamboli,15/04/2022
+LCV-709,8500,wada,15/04/2022
+LCV-709,10300,Valsad,15/04/2022
+LCV-709,20200,Mehsana,15/04/2022
+LCV-709,7500,Navi Mumbai,15/04/2022
+LCV-709,8500,Silvasa,15/04/2022
+LCV-709,8700,Vapi,15/04/2022
+LCV-709,8400,Kurakumbh,15/04/2022
+LCV-709,8500,Daman,15/04/2022
+LCV-709,8800,Ahmednagar,15/04/2022
+LCV-709,7500,Patalganga,15/04/2022
+LCV-709,7200,Sahajpur,15/04/2022
+LCV-709,26100,Morbi,15/04/2022
+LCV-709,6600,Pirangut,15/04/2022
+LCV-709,15300,Bharuch,15/04/2022
+LCV-709,8500,Nasik,15/04/2022
+LCV-709,6900,Khopoli,15/04/2022
+LCV-709,8000,Ambernath,15/04/2022
+LCV-709,8300,Roha,15/04/2022
+LCV-709,6800,Wai,15/04/2022
+LCV-709,8500,BARAMATI,15/04/2022
+LCV-709,9200,"Silvasa, Castrol",15/04/2022
+LCV-709,6800,Khalapur,15/04/2022
+LCV-709,7400,Manchar,15/04/2022
+LCV-709,15800,Dahej,15/04/2022
+LCV-709,19000,Vadodara,15/04/2022
+LCV-17 Ft.,10700,Mumbai,15/04/2022
+LCV-17 Ft.,7800,Kalamboli,15/04/2022
+LCV-17 Ft.,18000,Gandhinagar,15/04/2022
+LCV-17 Ft.,10200,wada,15/04/2022
+LCV-17 Ft.,10700,Valsad,15/04/2022
+LCV-17 Ft.,20500,Mehsana,15/04/2022
+LCV-17 Ft.,8500,Navi Mumbai,15/04/2022
+LCV-17 Ft.,17000,Kolhapur,15/04/2022
+LCV-17 Ft.,29900,Gandhidham,15/04/2022
+LCV-17 Ft.,9200,Silvasa,15/04/2022
+LCV-17 Ft.,23900,Rajkot,15/04/2022
+LCV-17 Ft.,17600,Goblej,15/04/2022
+LCV-17 Ft.,9500,Vapi,15/04/2022
+LCV-17 Ft.,13800,Aurangabad,15/04/2022
+LCV-17 Ft.,18200,Ahmedabad,15/04/2022
+LCV-17 Ft.,9800,Kurakumbh,15/04/2022
+LCV-17 Ft.,9100,Daman,15/04/2022
+LCV-17 Ft.,9700,Ahmednagar,15/04/2022
+LCV-17 Ft.,8800,Patalganga,15/04/2022
+LCV-17 Ft.,7700,Sahajpur,15/04/2022
+LCV-17 Ft.,21900,Nagpur,15/04/2022
+LCV-17 Ft.,26100,Morbi,15/04/2022
+LCV-17 Ft.,7500,Pirangut,15/04/2022
+LCV-17 Ft.,20000,Akola,15/04/2022
+LCV-17 Ft.,16300,Bharuch,15/04/2022
+LCV-17 Ft.,9700,Nasik,15/04/2022
+LCV-17 Ft.,7300,Khopoli,15/04/2022
+LCV-17 Ft.,9100,Ambernath,15/04/2022
+LCV-17 Ft.,9900,Roha,15/04/2022
+LCV-17 Ft.,7900,Wai,15/04/2022
+LCV-17 Ft.,18000,Godhara,15/04/2022
+LCV-17 Ft.,9400,BARAMATI,15/04/2022
+LCV-17 Ft.,9700,"Silvasa, Castrol",15/04/2022
+LCV-17 Ft.,18000,Latur ,15/04/2022
+LCV-17 Ft.,7400,Khalapur,15/04/2022
+LCV-17 Ft.,18200,Sanand,15/04/2022
+LCV-17 Ft.,8000,Manchar,15/04/2022
+LCV-17 Ft.,16500,Dahej,15/04/2022
+LCV-17 Ft.,20000,Vadodara,15/04/2022
+Truck-19 Ft.,11200,Mumbai,15/04/2022
+Truck-19 Ft.,8300,Kalamboli,15/04/2022
+Truck-19 Ft.,19700,Gandhinagar,15/04/2022
+Truck-19 Ft.,11000,wada,15/04/2022
+Truck-19 Ft.,11000,Valsad,15/04/2022
+Truck-19 Ft.,22600,Mehsana,15/04/2022
+Truck-19 Ft.,9200,Navi Mumbai,15/04/2022
+Truck-19 Ft.,19200,Kolhapur,15/04/2022
+Truck-19 Ft.,33200,Gandhidham,15/04/2022
+Truck-19 Ft.,9700,Silvasa,15/04/2022
+Truck-19 Ft.,25400,Rajkot,15/04/2022
+Truck-19 Ft.,20000,Goblej,15/04/2022
+Truck-19 Ft.,10000,Vapi,15/04/2022
+Truck-19 Ft.,14700,Aurangabad,15/04/2022
+Truck-19 Ft.,20200,Ahmedabad,15/04/2022
+Truck-19 Ft.,10600,Kurakumbh,15/04/2022
+Truck-19 Ft.,41900,Faridabad,15/04/2022
+Truck-19 Ft.,9700,Daman,15/04/2022
+Truck-19 Ft.,10600,Ahmednagar,15/04/2022
+Truck-19 Ft.,9200,Patalganga,15/04/2022
+Truck-19 Ft.,8200,Sahajpur,15/04/2022
+Truck-19 Ft.,23400,Nagpur,15/04/2022
+Truck-19 Ft.,7700,Pirangut,15/04/2022
+Truck-19 Ft.,21100,Akola,15/04/2022
+Truck-19 Ft.,17600,Bharuch,15/04/2022
+Truck-19 Ft.,10200,Nasik,15/04/2022
+Truck-19 Ft.,8000,Khopoli,15/04/2022
+Truck-19 Ft.,9700,Ambernath,15/04/2022
+Truck-19 Ft.,10700,Roha,15/04/2022
+Truck-19 Ft.,8400,Wai,15/04/2022
+Truck-19 Ft.,20500,Godhara,15/04/2022
+Truck-19 Ft.,11000,BARAMATI,15/04/2022
+Truck-19 Ft.,6500,Dhayari (Pune),15/04/2022
+Truck-19 Ft.,10200,"Silvasa, Castrol",15/04/2022
+Truck-19 Ft.,22200,Latur ,15/04/2022
+Truck-19 Ft.,7900,Khalapur,15/04/2022
+Truck-19 Ft.,20200,Sanand,15/04/2022
+Truck-19 Ft.,9000,Manchar,15/04/2022
+Truck-19 Ft.,18200,Dahej,15/04/2022
+Truck-19 Ft.,21100,Vadodara,15/04/2022
+Cont.-19 Ft.,12800,Mumbai,15/04/2022
+Cont.-19 Ft.,10800,Kalamboli,15/04/2022
+Cont.-19 Ft.,24400,Gandhinagar,15/04/2022
+Cont.-19 Ft.,50300,Delhi,15/04/2022
+Cont.-19 Ft.,12300,wada,15/04/2022
+Cont.-19 Ft.,52600,Ambala,15/04/2022
+Cont.-19 Ft.,38700,Chittore,15/04/2022
+Cont.-19 Ft.,16700,Valsad,15/04/2022
+Cont.-19 Ft.,29000,Mehsana,15/04/2022
+Cont.-19 Ft.,10900,Navi Mumbai,15/04/2022
+Cont.-19 Ft.,31600,Bidadi,15/04/2022
+Cont.-19 Ft.,16100,Silvasa,15/04/2022
+Cont.-19 Ft.,28200,Hyderabad,15/04/2022
+Cont.-19 Ft.,34800,Mysore,15/04/2022
+Cont.-19 Ft.,50500,Gaziyabad,15/04/2022
+Cont.-19 Ft.,49200,Ernakulam,15/04/2022
+Cont.-19 Ft.,62100,Kanpur,15/04/2022
+Cont.-19 Ft.,78800,Kolkata,15/04/2022
+Cont.-19 Ft.,38500,Rajkot,15/04/2022
+Cont.-19 Ft.,24100,Goblej,15/04/2022
+Cont.-19 Ft.,44500,Jaipur,15/04/2022
+Cont.-19 Ft.,39500,Chennai,15/04/2022
+Cont.-19 Ft.,40600,Guntur,15/04/2022
+Cont.-19 Ft.,15600,Vapi,15/04/2022
+Cont.-19 Ft.,19000,Aurangabad,15/04/2022
+Cont.-19 Ft.,24400,Ahmedabad,15/04/2022
+Cont.-19 Ft.,11300,Kurakumbh,15/04/2022
+Cont.-19 Ft.,39000,Kanchipuram,15/04/2022
+Cont.-19 Ft.,61200,Ludhiana,15/04/2022
+Cont.-19 Ft.,45700,Faridabad,15/04/2022
+Cont.-19 Ft.,16300,Daman,15/04/2022
+Cont.-19 Ft.,62400,Solan,15/04/2022
+Cont.-19 Ft.,11400,Ahmednagar,15/04/2022
+Cont.-19 Ft.,61400,Jalandhar,15/04/2022
+Cont.-19 Ft.,49100,Bharatpur,15/04/2022
+Cont.-19 Ft.,76300,Jammu,15/04/2022
+Cont.-19 Ft.,47700,Kota,15/04/2022
+Cont.-19 Ft.,70700,Pathankot,15/04/2022
+Cont.-19 Ft.,47600,Trichy,15/04/2022
+Cont.-19 Ft.,10800,Patalganga,15/04/2022
+Cont.-19 Ft.,50500,Kakinada,15/04/2022
+Cont.-19 Ft.,10000,Sahajpur,15/04/2022
+Cont.-19 Ft.,29900,Nagpur,15/04/2022
+Cont.-19 Ft.,9200,Pirangut,15/04/2022
+Cont.-19 Ft.,28100,Akola,15/04/2022
+Cont.-19 Ft.,56200,Jhansi,15/04/2022
+Cont.-19 Ft.,20600,Bharuch,15/04/2022
+Cont.-19 Ft.,46500,Palakkad,15/04/2022
+Cont.-19 Ft.,52400,Agra,15/04/2022
+Cont.-19 Ft.,12300,Nasik,15/04/2022
+Cont.-19 Ft.,60400,Unnao,15/04/2022
+Cont.-19 Ft.,49100,Morena,15/04/2022
+Cont.-19 Ft.,46300,Alwar,15/04/2022
+Cont.-19 Ft.,9700,Khopoli,15/04/2022
+Cont.-19 Ft.,11900,Ambernath,15/04/2022
+Cont.-19 Ft.,12800,Roha,15/04/2022
+Cont.-19 Ft.,10600,Wai,15/04/2022
+Cont.-19 Ft.,50300,Noida,15/04/2022
+Cont.-19 Ft.,51200,Hapur,15/04/2022
+Cont.-19 Ft.,25400,Godhara,15/04/2022
+Cont.-19 Ft.,51700,Bahadurgarh,15/04/2022
+Cont.-19 Ft.,12100,BARAMATI,15/04/2022
+Cont.-19 Ft.,40300,Sricity,15/04/2022
+Cont.-19 Ft.,8200,Dhayari (Pune),15/04/2022
+Cont.-19 Ft.,41300,NELLORE,15/04/2022
+Cont.-19 Ft.,16700,"Silvasa, Castrol",15/04/2022
+Cont.-19 Ft.,24100,Latur ,15/04/2022
+Cont.-19 Ft.,54100,Hathras,15/04/2022
+Cont.-19 Ft.,10100,Khalapur,15/04/2022
+Cont.-19 Ft.,56800,Faizabad,15/04/2022
+Cont.-19 Ft.,63500,Trivandrum,15/04/2022
+Cont.-19 Ft.,42600,CHHINDWARA,15/04/2022
+Cont.-19 Ft.,55500,Mathura,15/04/2022
+Cont.-19 Ft.,24600,Sanand,15/04/2022
+Cont.-19 Ft.,53200,Hisar,15/04/2022
+Cont.-19 Ft.,30500,Himmatnagar,15/04/2022
+Cont.-19 Ft.,10200,Manchar,15/04/2022
+Cont.-19 Ft.,65600,Barabanki,15/04/2022
+Cont.-19 Ft.,63100,Hoshiarpur,15/04/2022
+Cont.-19 Ft.,44700,Bhiwadi,15/04/2022
+Cont.-19 Ft.,54400,Chandigarh,15/04/2022
+Cont.-19 Ft.,64500,Lucknow,15/04/2022
+Cont.-19 Ft.,58200,Rajpura ,15/04/2022
+Cont.-19 Ft.,21200,Dahej,15/04/2022
+Cont.-19 Ft.,24200,Pitampur,15/04/2022
+Cont.-19 Ft.,28900,Rangapur,15/04/2022
+Cont.-19 Ft.,57700,Ropar,15/04/2022
+Cont.-19 Ft.,24700,Vadodara,15/04/2022
+Cont.-20 Ft.,13500,Mumbai,15/04/2022
+Cont.-20 Ft.,11300,Kalamboli,15/04/2022
+Cont.-20 Ft.,26600,Gandhinagar,15/04/2022
+Cont.-20 Ft.,52000,Delhi,15/04/2022
+Cont.-20 Ft.,12800,wada,15/04/2022
+Cont.-20 Ft.,55700,Ambala,15/04/2022
+Cont.-20 Ft.,39500,Chittore,15/04/2022
+Cont.-20 Ft.,17500,Valsad,15/04/2022
+Cont.-20 Ft.,31900,Mehsana,15/04/2022
+Cont.-20 Ft.,11900,Navi Mumbai,15/04/2022
+Cont.-20 Ft.,32100,Bidadi,15/04/2022
+Cont.-20 Ft.,42000,Gandhidham,15/04/2022
+Cont.-20 Ft.,16600,Silvasa,15/04/2022
+Cont.-20 Ft.,30200,Hyderabad,15/04/2022
+Cont.-20 Ft.,35800,Mysore,15/04/2022
+Cont.-20 Ft.,52700,Gaziyabad,15/04/2022
+Cont.-20 Ft.,51800,Ernakulam,15/04/2022
+Cont.-20 Ft.,63700,Kanpur,15/04/2022
+Cont.-20 Ft.,78800,Kolkata,15/04/2022
+Cont.-20 Ft.,41400,Rajkot,15/04/2022
+Cont.-20 Ft.,26300,Goblej,15/04/2022
+Cont.-20 Ft.,45800,Jaipur,15/04/2022
+Cont.-20 Ft.,40600,Chennai,15/04/2022
+Cont.-20 Ft.,42700,Guntur,15/04/2022
+Cont.-20 Ft.,16400,Vapi,15/04/2022
+Cont.-20 Ft.,20600,Aurangabad,15/04/2022
+Cont.-20 Ft.,26300,Ahmedabad,15/04/2022
+Cont.-20 Ft.,11900,Kurakumbh,15/04/2022
+Cont.-20 Ft.,64800,Rudrapur,15/04/2022
+Cont.-20 Ft.,40600,Kanchipuram,15/04/2022
+Cont.-20 Ft.,71700,Khurda,15/04/2022
+Cont.-20 Ft.,63000,Ludhiana,15/04/2022
+Cont.-20 Ft.,48600,Faridabad,15/04/2022
+Cont.-20 Ft.,16800,Daman,15/04/2022
+Cont.-20 Ft.,63800,Solan,15/04/2022
+Cont.-20 Ft.,13000,Ahmednagar,15/04/2022
+Cont.-20 Ft.,63000,Jalandhar,15/04/2022
+Cont.-20 Ft.,51500,Bharatpur,15/04/2022
+Cont.-20 Ft.,69400,Sriganganagar,15/04/2022
+Cont.-20 Ft.,77900,Jammu,15/04/2022
+Cont.-20 Ft.,50300,Kota,15/04/2022
+Cont.-20 Ft.,65200,Haridwar,15/04/2022
+Cont.-20 Ft.,71900,Pathankot,15/04/2022
+Cont.-20 Ft.,49700,Trichy,15/04/2022
+Cont.-20 Ft.,42100,Bundi,15/04/2022
+Cont.-20 Ft.,11800,Patalganga,15/04/2022
+Cont.-20 Ft.,52000,Kakinada,15/04/2022
+Cont.-20 Ft.,10600,Sahajpur,15/04/2022
+Cont.-20 Ft.,31000,Nagpur,15/04/2022
+Cont.-20 Ft.,42000,Morbi,15/04/2022
+Cont.-20 Ft.,9600,Pirangut,15/04/2022
+Cont.-20 Ft.,30800,Akola,15/04/2022
+Cont.-20 Ft.,58500,Jhansi,15/04/2022
+Cont.-20 Ft.,23600,Bharuch,15/04/2022
+Cont.-20 Ft.,48400,Palakkad,15/04/2022
+Cont.-20 Ft.,53600,Agra,15/04/2022
+Cont.-20 Ft.,14100,Nasik,15/04/2022
+Cont.-20 Ft.,61900,Unnao,15/04/2022
+Cont.-20 Ft.,50200,Morena,15/04/2022
+Cont.-20 Ft.,48400,Alwar,15/04/2022
+Cont.-20 Ft.,10200,Khopoli,15/04/2022
+Cont.-20 Ft.,13000,Ambernath,15/04/2022
+Cont.-20 Ft.,14000,Roha,15/04/2022
+Cont.-20 Ft.,11600,Wai,15/04/2022
+Cont.-20 Ft.,52000,Noida,15/04/2022
+Cont.-20 Ft.,55500,Hapur,15/04/2022
+Cont.-20 Ft.,27400,Godhara,15/04/2022
+Cont.-20 Ft.,52800,Bahadurgarh,15/04/2022
+Cont.-20 Ft.,12600,BARAMATI,15/04/2022
+Cont.-20 Ft.,41500,Sricity,15/04/2022
+Cont.-20 Ft.,8800,Dhayari (Pune),15/04/2022
+Cont.-20 Ft.,42400,NELLORE,15/04/2022
+Cont.-20 Ft.,17100,"Silvasa, Castrol",15/04/2022
+Cont.-20 Ft.,25800,Latur ,15/04/2022
+Cont.-20 Ft.,55100,Hathras,15/04/2022
+Cont.-20 Ft.,10700,Khalapur,15/04/2022
+Cont.-20 Ft.,61300,Faizabad,15/04/2022
+Cont.-20 Ft.,65000,Ponta Sahib HP,15/04/2022
+Cont.-20 Ft.,74500,"Shamshi, Kullu, HP",15/04/2022
+Cont.-20 Ft.,64700,Trivandrum,15/04/2022
+Cont.-20 Ft.,45000,CHHINDWARA,15/04/2022
+Cont.-20 Ft.,57000,Tirunelveli,15/04/2022
+Cont.-20 Ft.,56000,Mathura,15/04/2022
+Cont.-20 Ft.,53900,Panipat,15/04/2022
+Cont.-20 Ft.,26300,Sanand,15/04/2022
+Cont.-20 Ft.,54100,Hisar,15/04/2022
+Cont.-20 Ft.,39400,Bhopal,15/04/2022
+Cont.-20 Ft.,34800,Himmatnagar,15/04/2022
+Cont.-20 Ft.,11400,Manchar,15/04/2022
+Cont.-20 Ft.,65500,Kapurthala,15/04/2022
+Cont.-20 Ft.,67200,Barabanki,15/04/2022
+Cont.-20 Ft.,93900,Siliguri,15/04/2022
+Cont.-20 Ft.,64700,Hoshiarpur,15/04/2022
+Cont.-20 Ft.,46200,Bhiwadi,15/04/2022
+Cont.-20 Ft.,55000,Chandigarh,15/04/2022
+Cont.-20 Ft.,65700,Lucknow,15/04/2022
+Cont.-20 Ft.,59200,Rajpura ,15/04/2022
+Cont.-20 Ft.,23900,Dahej,15/04/2022
+Cont.-20 Ft.,25200,Pitampur,15/04/2022
+Cont.-20 Ft.,76800,Ranchi,15/04/2022
+Cont.-20 Ft.,29900,Rangapur,15/04/2022
+Cont.-20 Ft.,58700,Ropar,15/04/2022
+Cont.-20 Ft.,25200,Vadodara,15/04/2022
+Cont.-20 Ft.,56600,Gangaikondam,15/04/2022
+Cont.-32 Ft.,39600,Gandhinagar,15/04/2022
+Cont.-32 Ft.,66100,Delhi,15/04/2022
+Cont.-32 Ft.,71500,Ambala,15/04/2022
+Cont.-32 Ft.,50200,Bidadi,15/04/2022
+Cont.-32 Ft.,54500,Gandhidham,15/04/2022
+Cont.-32 Ft.,46400,Hyderabad,15/04/2022
+Cont.-32 Ft.,67600,Gaziyabad,15/04/2022
+Cont.-32 Ft.,74200,Kanpur,15/04/2022
+Cont.-32 Ft.,99400,Kolkata,15/04/2022
+Cont.-32 Ft.,39600,Goblej,15/04/2022
+Cont.-32 Ft.,59600,Chennai,15/04/2022
+Cont.-32 Ft.,62000,Guntur,15/04/2022
+Cont.-32 Ft.,37400,Ahmedabad,15/04/2022
+Cont.-32 Ft.,75200,Rudrapur,15/04/2022
+Cont.-32 Ft.,86900,Khurda,15/04/2022
+Cont.-32 Ft.,76000,Ludhiana,15/04/2022
+Cont.-32 Ft.,66700,Faridabad,15/04/2022
+Cont.-32 Ft.,75800,Jalandhar,15/04/2022
+Cont.-32 Ft.,96000,Jammu,15/04/2022
+Cont.-32 Ft.,68500,Kota,15/04/2022
+Cont.-32 Ft.,87400,Pathankot,15/04/2022
+Cont.-32 Ft.,32100,Bharuch,15/04/2022
+Cont.-32 Ft.,68200,Agra,15/04/2022
+Cont.-32 Ft.,69400,Morena,15/04/2022
+Cont.-32 Ft.,69700,Noida,15/04/2022
+Cont.-32 Ft.,39600,Godhara,15/04/2022
+Cont.-32 Ft.,64500,Bahadurgarh,15/04/2022
+Cont.-32 Ft.,56700,Sricity,15/04/2022
+Cont.-32 Ft.,44400,Latur ,15/04/2022
+Cont.-32 Ft.,72300,Faizabad,15/04/2022
+Cont.-32 Ft.,56600,CHHINDWARA,15/04/2022
+Cont.-32 Ft.,86400,Tirunelveli,15/04/2022
+Cont.-32 Ft.,67600,Mathura,15/04/2022
+Cont.-32 Ft.,68300,Panipat,15/04/2022
+Cont.-32 Ft.,37400,Sanand,15/04/2022
+Cont.-32 Ft.,82100,Kapurthala,15/04/2022
+Cont.-32 Ft.,78400,Barabanki,15/04/2022
+Cont.-32 Ft.,124800,Siliguri,15/04/2022
+Cont.-32 Ft.,79600,Hoshiarpur,15/04/2022
+Cont.-32 Ft.,66900,Chandigarh,15/04/2022
+Cont.-32 Ft.,76600,Lucknow,15/04/2022
+Cont.-32 Ft.,32600,Dahej,15/04/2022
+Cont.-32 Ft.9,81200,Ambala,15/04/2022
+Cont.-32 Ft.9,56600,Bidadi,15/04/2022
+Cont.-32 Ft.9,50200,Hyderabad,15/04/2022
+Cont.-32 Ft.9,82700,Kanpur,15/04/2022
+Cont.-32 Ft.9,107800,Kolkata,15/04/2022
+Cont.-32 Ft.9,67300,Guntur,15/04/2022
+Cont.-32 Ft.9,84300,Rudrapur,15/04/2022
+Cont.-32 Ft.9,95800,Khurda,15/04/2022
+Cont.-32 Ft.9,74200,Faridabad,15/04/2022
+Cont.-32 Ft.9,108800,Jammu,15/04/2022
+Cont.-32 Ft.9,97800,Pathankot,15/04/2022
+Cont.-32 Ft.9,80000,Noida,15/04/2022
+Cont.-32 Ft.9,62000,Sricity,15/04/2022
+Cont.-32 Ft.9,77900,Panipat,15/04/2022
+Cont.-32 Ft.9,92000,Kapurthala,15/04/2022
+Cont.-32 Ft.9,85400,Barabanki,15/04/2022
+Cont.-32 Ft.9,133200,Siliguri,15/04/2022
+Cont.-32 Ft.9,92900,Hoshiarpur,15/04/2022
+Cont.-32 Ft.9,85300,Gangaikondam,15/04/2022
+Cont.-19 Ft.,78800,Jamshedpur,15/04/2022
+Cont.-20 Ft.,78800,Jamshedpur,15/04/2022
+Cont.-32 Ft.,99900,Jamshedpur,15/04/2022
+Cont.-32 Ft.9,108700,Jamshedpur,15/04/2022
+Cont.-20 Ft.,124800,Guwahati,15/04/2022
+Cont.-32 Ft.,145600,Guwahati,15/04/2022
+Cont.-32 Ft.9,154000,Guwahati,15/04/2022
+Cont.-19 Ft.,77800,Patna,15/04/2022
+Cont.-20 Ft.,77800,Patna,15/04/2022
+Cont.-32 Ft.,98400,Patna,15/04/2022
+Cont.-32 Ft.9,106800,Patna,15/04/2022

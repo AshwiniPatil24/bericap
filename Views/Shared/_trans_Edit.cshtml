@@ -1,0 +1,231 @@
+﻿@model FreightApp.Models.TRANSPORTER_M
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-dialog.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-dialog.css" rel="stylesheet" />
+
+
+
+
+@using (Html.BeginForm("trans_Edit_save", "Freight"))
+{
+
+    <div id="edit1">
+
+      <table class="table table-bordered table-hover" >
+
+
+            <tr hidden="hidden">
+                <td>Id.
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.ID)
+                    @Html.ValidationMessageFor(model => model.ID)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Code:
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.VEN_CODE, new {@readonly="readonly" })
+                    @Html.ValidationMessageFor(model => model.VEN_CODE)
+                </td>
+            </tr>
+            <tr>
+                <td>Transporter NAme:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.VEN_NAME)
+                    @Html.ValidationMessageFor(model => model.VEN_NAME)
+                </td>
+            </tr>
+            <tr>
+
+
+                <td>Tranport Type:
+                </td>
+               @* <td>
+                    @Html.EditorFor(model => model.VEN_TYPE)
+                    @Html.ValidationMessageFor(model => model.VEN_TYPE)
+                </td>*@
+
+                 @{
+   var listItems = new List<SelectListItem>();
+   listItems.Add(new SelectListItem { Text = "Full Load", Value = "full" });
+   listItems.Add(new SelectListItem { Text = "Part Load", Value = "part" });
+   listItems.Add(new SelectListItem { Text = "Export", Value = "export" });
+
+}
+
+        <td>
+             @Html.DropDownListFor(model => model.VEN_TYPE, listItems)
+                                     
+        </td>
+
+
+
+            </tr>
+            <tr>
+                <td>Address:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.VEN_ADDR)
+                    @Html.ValidationMessageFor(model => model.VEN_ADDR)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Contact Person:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CONTACT_PER)
+                    @Html.ValidationMessageFor(model => model.CONTACT_PER)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Mobile Number:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.CONTACT)
+                    @Html.ValidationMessageFor(model => model.CONTACT)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Email Id:
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.EMAIL)
+                    @Html.ValidationMessageFor(model => model.EMAIL)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="submit" value="Save" class="btn-success" class="btn-md" />
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    
+    
+    
+    <div id="details1">
+        <table class="table table-bordered table-hover" >
+
+             <tr hidden="hidden">
+                <td>Id.
+                </td>
+                <td id="idts">
+                    @Html.DisplayFor(model => model.ID)
+                  
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td>Code:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VEN_CODE)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Transporter Name:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VEN_NAME)
+                </td>
+            </tr>
+            <tr>
+                <td>Tranport type:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VEN_TYPE)
+                </td>
+            </tr>
+            <tr>
+                <td>Address:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VEN_ADDR)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Contact Person:
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.CONTACT_PER)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Mobile no.
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.CONTACT)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Email Id.
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.EMAIL)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" class="btn-primary" value="Edit" id="edt1" />
+                </td>
+                
+            </tr>
+
+
+
+        </table>
+    </div>
+    
+    
+}
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#details1").show();
+        $("#edit1").hide();
+
+        $("#edt1").click(function () {
+           
+            $("#details1").hide();
+            $("#edit1").show();
+
+        });
+
+
+    });
+
+
+
+</script>
+
+
+<style>
+  .table {
+     background-color: #d7f1ee;
+}
+    </style>

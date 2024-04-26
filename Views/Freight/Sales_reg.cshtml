@@ -1,0 +1,168 @@
+﻿@{
+    ViewBag.Title = "Sales_reg";
+}
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+
+
+<hr />
+ <input type="text"  value='@Session["sroption"].ToString()' id="sroption"  hidden="hidden"/>
+<div class="col-md-12">
+    <div class="panel with-nav-tabs panel-success">
+        <div class="panel-heading">
+            <ul class="nav nav-tabs" style="font-size:14px">
+                
+                <li class="active"><a href="#sru" data-toggle="tab" id="sru1" class="navtav">Sales Register Upload</a></li>    
+               @* <li><a href="#srv" id="srv1" data-toggle="tab" class="navtav">Sales Register</a></li>   *@          
+                @*<li><a href="#unl" data-toggle="tab" id="unl1" class="navtav">Sales Register Unlock</a></li>*@
+            </ul>
+        </div>
+        <div class="panel-body">
+            <div class="tab-content" >
+
+@*******************************************************************Enter Date******************************************************@
+                <div class="tab-pane fade " id="srv"> 
+                     <div id="srv2" style ="width:1200px;height:400px;overflow-x:scroll;overflow-y:scroll"> 
+
+                     </div> 
+                </div>
+
+@*******************************************************************Enter Date******************************************************@
+                <div  id="sru" class="tab-pane fade in active">
+                      @using (Html.BeginForm("File_Upload", "Freight", FormMethod.Post,
+                         new { enctype = "multipart/form-data" }))
+                                    {
+                    <div>
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                       Upload File: <input type="file" name="fileupload" /></td>
+                                                    <td>
+                                                        <input type="submit" name="btn" value="Upload" class="btn btn-primary" />
+                                                    </td>
+                                                </tr>
+                                            </table>                        
+                    </div> 
+                      }
+                     <div id="sru2"> @ViewBag.feedback</div>
+                </div>
+
+ 
+                 
+  @*******************************************************************RMRates******************************************************@
+                <div id="unl" class="tab-pane fade">
+
+                 
+                     
+                </div> <div id="unl2" style ="width:1200px;height:500px;overflow-x:scroll;overflow-y:scroll">   
+                        
+
+                    </div>
+       
+                </div>
+            </div>
+
+        </div>
+    </div>
+ 
+<script type="text/javascript">
+   
+    $(document).ready(function () {
+    var flg = $("#sroption").val();       
+        
+        partialdisp(flg)
+        activaTab(flg)
+        $("#mmmyy1").on('change', function () {
+            var mmmyy = "";
+            mmmyy = $("#mmmyy1").val();
+           
+            $.ajax({
+                url: '@Url.Action("sr_index")',
+                data: { mmyyy: mmmyy },
+                type: 'POST',
+                success: function (data)
+                {
+                    $("#srv2").html(data);
+                }
+             })
+
+        })
+
+
+ 
+        $(".navtav").click(function () {
+          var flag = $(this).attr("id"); flag = flag.substring(0, 3);
+           
+          partialdisp(flag)
+         
+        });
+       function activaTab(tabId) {
+           $('.nav-tabs a[href="#' + tabId + '"]').tab('show');
+
+        };
+        function partialdisp(flag) {
+          
+            switch (flag) {
+                case "srv": $("#unl2").hide(); $("#sru2").hide(); $("#srv2").show();
+                    $.ajax({
+                        url: '@Url.Action("sr_index")', type: 'POST', success: function (data) { $("#srv2").html(data); }
+                        })
+                        break;
+                case "sru": $("#sru2").show(); $("#srv2").hide(); $("#unl2").hide(); break;
+                case "unl": $("#unl2").show(); $("#srv2").hide(); $("#sru2").hide();break;
+                default: $("#unl2").hide(); $("#sru2").show(); $("#srv2").hide(); break;
+                }
+
+
+            }
+
+
+        //------------------------------------------------------------------------------------Datepicker----------------------------------
+    $(function () {
+      
+   
+        $('.date-picker').datepicker({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            dateFormat: 'dd-mm-yy',
+            onChangeMonthYear: function (dateText, inst) {
+                var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(year, month, 1));
+
+            }
+        });
+    });
+    //---------------------------------------------------------------------------------------------------------------------------------------------
+
+    });
+
+
+</script>
+
+<style>
+    .floating-box {
+        display: inline-block;
+        width: 100px;
+        height: 70px;
+        border: 1px solid #0a185c;
+    }
+
+    .container {
+        border: 1px solid #0a185c;
+    }
+    /*.table {
+    padding-left:1%;
+    }*/
+</style>

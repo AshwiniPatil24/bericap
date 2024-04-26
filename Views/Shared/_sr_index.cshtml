@@ -1,0 +1,216 @@
+﻿@model IEnumerable<FreightApp.Models.SALES>
+
+<table class="table table-bordered table-hover table-striped">
+    <tr style="background-color:#abc6c6">
+        <th>
+           Billing Doc
+        </th>
+        <th>
+             Billing Date
+        </th>
+        <th>
+           Ref no.
+        </th>
+         <th>
+          Lr No
+        </th>
+         <th>
+            Freight
+        </th>
+       
+        <th>
+           Mns Trans 
+        </th>
+        <th>
+            Ship TI Party
+        </th>
+        <th>
+            Ship To Party
+        </th>
+        <th>
+           Sold TO Party
+        </th>
+        <th>
+      Lcn of STP
+        </th>
+        <th>
+          Name of Sold to Party
+        </th>
+        <th>
+           Lcn of SOP
+        </th>
+        <th>
+           Mat No
+        </th>
+        <th>
+            Mat Desc
+        </th>
+        <th>
+            Hie no
+        </th>
+        <th>
+            Hie Desc
+        </th>
+        <th>
+            Bill Qty
+        </th>
+        <th>
+           Box Qty
+        </th>
+        <th>
+           Frt aft St
+        </th>
+        <th>
+           City
+        </th>
+        <th>
+            Country Key
+        </th>
+        <th>
+          Inco
+        </th>
+        <th>
+           Vendor
+        </th>
+        <th>
+           Trans Name
+        </th>
+       
+        <th>
+          State name
+        </th>
+        <th>
+           State SOP
+        </th>
+        <th>
+            GST of Sold to party
+        </th>
+        <th>
+            GSt ship to party
+        </th>
+       
+       
+        <th>
+            Vehicle No.
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </th>
+       
+      
+    </tr>
+
+@foreach (var item in Model) {
+    <tr style="font-size:smaller">
+        <td>
+            @Html.DisplayFor(modelItem => item.BILLING_DOC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_DT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REF_NO)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.LR_NO)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.FREIGHT_T)
+        </td>
+        
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.MNS_TRANSTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SHIP_TO_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME_SHIP_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SOLD_TO_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LCN_SHIP_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME_SOLD_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LCN_SOLD_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAT_NO)
+        </td>
+        <td style="font-size:xx-small">
+            @Html.DisplayFor(modelItem => item.MAT_DESC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HIE_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HIE_DESC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_QTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BOX_QTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FRT_AFT_ST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COUNTRY_KEY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INCOTERMS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VENDOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TRANS_NAME)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.STATE_NM_SHIP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATE_NM_SOLD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GST_NO_SOLD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GST_NO_SHIP)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.VEH_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATUS)
+        </td>
+        
+       
+    </tr>
+}
+
+</table>
+
+
+
+<style>
+    .table-striped {
+  background-color: #d7f1ee;
+
+    }
+     .hd {
+         background-color: #abc6c6;
+    }
+</style>

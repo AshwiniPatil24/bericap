@@ -1,0 +1,130 @@
+﻿@model IEnumerable<FreightApp.Models.SETTINGS>
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+<table class="table table-bordered table-striped" id="header-fixed">
+    <tr>
+        <th>
+           Budget Year
+        </th>
+        <th>
+           Status
+        </th>
+        <th>
+           File Lock Status 
+        </th>
+        <th>Delete</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td class="idd" hidden="hidden">
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.VALUE)
+        </td>
+          @if(item.VALUE=="Y")
+            {    
+        <td class="unlkbud">
+           
+                 Unlock  </td>
+            }
+          else
+          { <td class="unlkbud">
+                Lock  </td>
+          }     
+            
+       
+        <td class="delbud">X</td>
+    </tr>
+}
+
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".delbud").click(function(){
+            alert("are you sure you want to delete Budget? ") //to be changed with dialogue box
+            var i = $(this).parents('tr').find('.idd').text().trim();        
+            var rootUrl = '@Url.Content("~")'
+          $.get(rootUrl+'/Freight/delbud/', { i: i }, function (p) {
+                alert(p);
+                location.reload();
+            })
+            
+
+        })
+        $(".unlkbud").click(function () {           
+            var i = $(this).parents('tr').find('td:eq(0)').text().trim();       
+            var rootUrl = '@Url.Content("~")'
+          $.get(rootUrl+'/Freight/unlkbud/', { i: i }, function (p) {
+                alert(p);
+                location.reload();
+            })
+
+
+        })
+
+   @*     $(".delbud").click(function () {
+            var idd = $(".idd").text();
+            alert(idd)
+            if (idd == "" || idd == null) { }
+            else {
+
+                var msg = "Are you sure you want to delete the data?";
+                BootstrapDialog.show({
+                    message: msg,
+                    type: BootstrapDialog.TYPE_WARNING,
+                    buttons: [
+                    {
+                        label: 'Yes',
+
+                        // no title as it is optional
+                        cssClass: 'btn-primary',
+                        data: {
+                            js: 'btn-confirm',
+                            'user-id': '3'
+                        },
+                        action: function (dialogItself) {
+
+                            var rootUrl = '@Url.Content("~")'
+                          $.get(rootUrl+'/Freight/dsl_del/', { id: idd }, function (p) { /// methode name
+
+                                dialogItself.close();
+                                alert(p);
+                                FreightApp.reload();
+
+                            });
+                        }
+                    },
+
+                {
+                    label: 'Close',
+                    action: function (dialogI
+    tself) {
+                        dialogItself.close();
+                    }
+                }]
+                });
+                }
+            });*@
+
+
+
+
+    })
+
+    </script>

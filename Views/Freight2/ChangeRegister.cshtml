@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "ChangeRegister";
+}
+
+
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+ <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+ <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+<div class="col-xl-3" style="display:inline-flex">
+<input type="text" id="oldLRNo" value="" name="oldlrno" placeholder="Enter LR No" class="form-control"/>&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="text" id="newLRNo" value="" name="newlrno" placeholder="Enter New LR No" class="form-control" />&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="button" id="btnchange" value="Change" name="change" class="btn btn-success" />
+    </div>
+<div id="lrlist"></div>
+<script type="text/javascript">
+ $(document).ready(function () {
+     $('#oldLRNo').keyup(function () {
+         var v = $(this).val();
+         $.ajax({
+             url: '@Url.Action("search_lrno")', data: {lr:v }, type: 'POST', success: function (data) { 
+                    $("#lrlist").html(data);                   
+                }
+          })
+     });
+
+     $('#btnchange').on('click', function () {
+         var oldlrno = $("#oldLRNo").val();
+         var newlrno = $("#newLRNo").val();
+         //check length 
+         if (newlrno.length > 10) { alert("Length of LR No can not be greater than 10");}
+         else if (newlrno == null || newlrno == "") { alert("Please enter New LR no."); }
+         else if (oldlrno == null || newlrno == "") { alert("Please enter New LR no."); }
+         else {
+             $.ajax({
+                 url: '@Url.Action("savelrno")',
+                 data: { oldlrno: oldlrno, newlrno: newlrno },
+                 type: 'POST',
+                 success: function (p) {
+                     if (p == "Success") { alert("LR number has been updated successfully. Please search new LR No."); }
+                     else { alert(p); }
+                 }
+             })
+         }//end of else 
+     });
+
+})
+  </script>

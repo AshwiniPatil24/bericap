@@ -1,0 +1,301 @@
+﻿@model IEnumerable<FreightApp.Models.SALES>
+
+ 
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BILLING_DOC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BILL_DT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REF_NO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COM_CODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SHIP_TO_PARTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NAME_SHIP_PARTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SOLD_TO_PARTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NAME_SOLD_PARTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LCN_SOLD_PARTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MAT_NO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MAT_DESC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HIE_NO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HIE_DESC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BILL_QTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BOX_QTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOC_CURR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SALES_DOC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ASS_VALUE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FRT_AFT_ST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GROSS_VALUE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COUNTRY_KEY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COUNTRY_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REGION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UNIT_PRICE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FOB_VAL_CURR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INCOTERMS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VENDOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VEN_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LR_NO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MNS_TRANSTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRICING_UNIT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATE_CD_SHIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATE_NM_SHIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATE_CD_SOLD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STATE_NM_SOLD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PORT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IGST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IGST_RATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CGST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CGST_RATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SGST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SGST_RATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GST_NO_SOLD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GST_NO_SHIP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LCN_SHIP_PARTY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FRIEGHT)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILLING_DOC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_DT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REF_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COM_CODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SHIP_TO_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME_SHIP_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SOLD_TO_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NAME_SOLD_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LCN_SOLD_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAT_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAT_DESC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HIE_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HIE_DESC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BILL_QTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BOX_QTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOC_CURR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SALES_DOC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASS_VALUE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FRT_AFT_ST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GROSS_VALUE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COUNTRY_KEY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COUNTRY_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REGION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UNIT_PRICE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FOB_VAL_CURR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INCOTERMS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VENDOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VEN_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LR_NO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MNS_TRANSTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRICING_UNIT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATE_CD_SHIP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATE_NM_SHIP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATE_CD_SOLD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STATE_NM_SOLD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PORT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IGST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IGST_RATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CGST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CGST_RATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SGST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SGST_RATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GST_NO_SOLD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GST_NO_SHIP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LCN_SHIP_PARTY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FRIEGHT)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

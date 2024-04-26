@@ -1,0 +1,153 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-3.1.1.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+ 
+ <input type="text"  value='@Session["master"].ToString()' id="master" hidden="hidden"/>
+ 
+<h2 style="color:blue">@ViewBag.msg</h2>
+<hr />
+
+<div class="col-md-12">
+    <div class="panel with-nav-tabs panel-success" >
+        <div class="panel-heading" style="height:100%">
+            <ul class="nav nav-tabs" style="font-size:12px; ">
+               
+                <li class="active"><a href="#tm" data-toggle="tab" id="tm1" class="navtav">Transporter Master</a></li>
+                <li><a href="#vm" data-toggle="tab" id="vm1" class="navtav">Vehical Master</a></li>
+                <li><a href="#nm"  data-toggle="tab" id="nm1"class="navtav">Contract Master</a></li>
+                 <li><a href="#zm" id="zm1" data-toggle="tab" class="navtav">Zone Master</a></li>
+                <li><a href="#dm" data-toggle="tab" id="dm1" class="navtav">Disel Master</a></li>
+                <li><a href="#km" data-toggle="tab" id="km1" class="navtav">Kilometer Master</a></li>
+                @*<li ><a href="#cm" id="cm1" data-toggle="tab" class="navtav">Customer Master</a></li>*@
+                
+            </ul>
+        </div>
+        <div class="panel-body" style="height:600px">
+            <div class="tab-content" >
+              <div class="tab-pane fade " id="cm">
+                      <div id="cm3" class="partl">  </div>
+              </div>
+
+              <div class="tab-pane fade in active" id="tm" style="margin-left:2px;" >
+                <div id="tm3"class="partl"> </div>
+              </div>
+              <div class="tab-pane fade" id="vm" style="margin-left:2px;" >
+                         <div id="vm3"class="partl"> </div>
+              </div>
+
+                 <div class="tab-pane fade" id="nm" style="margin-left:2px;" >
+                          
+                         <div id="nm3"class="partl"> @ViewBag.msg   </div>
+              </div>
+
+                 <div class="tab-pane fade" id="zm" style="margin-left:2px;" >
+                         <div id="zm3"class="partl"> </div>
+              </div>
+
+
+                 <div class="tab-pane fade" id="dm" style="margin-left:2px;" >
+                         <div id="dm3"class="partl"> </div>
+              </div>
+
+                <div class="tab-pane fade" id="km" style="margin-left:2px;" >
+                         <div id="km3"class="partl"> </div>
+              </div>
+            </div> 
+        </div>
+    </div>
+</div>
+ 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+      
+        var flg = $("#master").val();
+     
+        partialdisp(flg)
+        activaTab(flg)
+        $(".navtav").click(function () {
+             var flag = $(this).attr("id"); flag = flag.substring(0, 2);
+      
+            partialdisp(flag)
+        });
+        function activaTab(tabId) {
+   //        alert(tabId)
+         $('.nav-tabs a[href="#' + tabId + '"]').tab('show');
+        };
+        function partialdisp(flag) {
+           
+         //   alert(flag)
+            switch (flag) {
+                case "cm":
+                    $.ajax({
+                        url: '@Url.Action("cust_index")', type: 'POST', success: function (data) { $("#cm3").html(data); }
+                        })
+                        break;
+                    case "tm":
+                        $.ajax({
+                            url: '@Url.Action("trans_index")', type: 'POST', success: function (data) { $("#tm3").html(data); }
+                    })
+                    break;
+                case "vm":
+                    $.ajax({
+                        url: '@Url.Action("vehi_index")', type: 'POST', success: function (data) { $("#vm3").html(data); }
+                    })
+                    break;
+
+                case "nm":
+                  
+                    $.ajax({
+                        url: '@Url.Action("contr_index")', type: 'POST', success: function (data) { $("#nm3").html(data); }
+                        })
+                    break;
+
+                case "zm":
+                    $.ajax({
+                        url: '@Url.Action("zone_index")', type: 'POST', success: function (data) { $("#zm3").html(data); }
+                    })
+                    break;
+
+                case "dm":
+                    $.ajax({
+                        url: '@Url.Action("dsl_index")', type: 'POST', success: function (data) { $("#dm3").html(data); }
+                    })
+                    break;
+
+                case "km":
+                    $.ajax({
+                        url: '@Url.Action("km_index")', type: 'POST', success: function (data) { $("#km3").html(data); }
+                    })
+                    break;
+
+                degault:
+                    $.ajax({
+                        url: '@Url.Action("contr_index")', type: 'POST', success: function (data) { $("#tm3").html(data); }
+                    })
+                    break;
+                }
+
+
+            }
+
+    });
+</script>
+
+
+<style>
+    .partl {
+    height:550px;
+    }
+
+</style>
